@@ -1,0 +1,10 @@
+{
+  "name": "@agnivo/scheduler",
+  "private": true,
+  "scripts": {
+    "dev": "go run ./cmd/scheduler",
+    "build": "go build -o bin/scheduler ./cmd/scheduler",
+    "test": "go test ./...",
+    "lint": "go vet ./..."
+  }
+}

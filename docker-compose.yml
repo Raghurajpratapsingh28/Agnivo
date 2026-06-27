@@ -1,0 +1,47 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.Dockerfile
+    container_name: agnivo-backend
+    restart: unless-stopped
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      PORT: 8080
+      AGNIVO_HTTP_ENABLED: "true"
+      AGNIVO_OBSERVABILITY_ADMIN_PORT: 9090
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/health/live"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    networks:
+      - agnivo
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/web.Dockerfile
+    container_name: agnivo-web
+    restart: unless-stopped
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8080}
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - agnivo
+
+networks:
+  agnivo:
+    driver: bridge

@@ -1,0 +1,40 @@
+# Development configuration overlay.
+# Precedence (low -> high): defaults < this file < .env < process env vars.
+# Select with AGNIVO_APP_ENVIRONMENT=development|staging|production and point
+# the loader at this directory with AGNIVO_CONFIG_DIR=configs.
+
+app:
+  shutdown_timeout: 30s
+
+http:
+  enabled: false          # set true for api; workers leave false (admin-only)
+  host: 0.0.0.0
+  port: 8080
+  request_timeout: 60s
+  cors:
+    allowed_origins: ["*"]
+    allow_credentials: false
+
+log:
+  level: debug
+  format: console         # json in staging/production
+
+database:
+  enabled: false
+  url: postgres://agnivo:agnivo@localhost:5432/agnivo?sslmode=disable
+  max_conns: 20
+  min_conns: 2
+
+redis:
+  enabled: false
+  url: redis://localhost:6379/0
+
+observability:
+  admin_host: 0.0.0.0
+  admin_port: 9090
+  tracing:
+    enabled: false
+    exporter: otlp
+    endpoint: localhost:4318
+    insecure: true
+    sampler: 1.0

@@ -1,0 +1,44 @@
+# Dependencies
+node_modules/
+graphify-out/
+.pnpm-store/
+
+# Turbo
+.turbo/
+
+# Next.js
+.next/
+out/
+
+# Go
+bin/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Build
+dist/
+build/
+coverage/

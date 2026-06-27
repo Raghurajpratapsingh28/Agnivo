@@ -1,0 +1,360 @@
+openapi: 3.1.0
+info:
+  title: Agnivo API
+  description: AgentCloud dashboard and control plane API
+  version: 1.0.0
+  contact:
+    name: Agnivo Engineering
+
+servers:
+  - url: http://localhost:8080
+    description: Local development
+  - url: https://api.agnivo.dev
+    description: Production
+
+tags:
+  - name: Auth
+  - name: Organizations
+  - name: Members
+  - name: API Keys
+  - name: Projects
+  - name: Deployments
+  - name: Repository
+  - name: Environment
+  - name: Secrets
+  - name: Domains
+  - name: Webhooks
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    Envelope:
+      type: object
+      properties:
+        data: {}
+        meta:
+          type: object
+          properties:
+            request_id:
+              type: string
+              format: uuid
+
+    ErrorEnvelope:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: validation
+            message:
+              type: string
+            details:
+              type: object
+
+    RegisterRequest:
+      type: object
+      required: [email, password, name]
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 8
+        name:
+          type: string
+
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+
+    TokenResponse:
+      type: object
+      properties:
+        access_token:
+          type: string
+        refresh_token:
+          type: string
+        expires_in:
+          type: integer
+
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        org_id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        slug:
+          type: string
+        region:
+          type: string
+
+    Deployment:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        project_id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum: [pending, building, deploying, success, failed, canceled]
+        commit_sha:
+          type: string
+
+paths:
+  /api/v1/auth/register:
+    post:
+      tags: [Auth]
+      summary: Register a new account
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterRequest'
+      responses:
+        '201':
+          description: Account created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Envelope'
+        '409':
+          description: Email already exists
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorEnvelope'
+
+  /api/v1/auth/login:
+    post:
+      tags: [Auth]
+      summary: Login and receive tokens
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: '#/components/schemas/Envelope'
+                  - type: object
+                    properties:
+                      data:
+                        $ref: '#/components/schemas/TokenResponse'
+
+  /api/v1/auth/refresh:
+    post:
+      tags: [Auth]
+      summary: Refresh access token
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refresh_token]
+              properties:
+                refresh_token:
+                  type: string
+      responses:
+        '200':
+          description: New tokens issued
+
+  /api/v1/auth/me:
+    get:
+      tags: [Auth]
+      summary: Get current user profile
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: User profile
+        '401':
+          description: Unauthenticated
+
+  /api/v1/orgs:
+    get:
+      tags: [Organizations]
+      summary: List organizations
+      security:
+        - BearerAuth: []
+      responses:
+        '200':
+          description: Organization list
+    post:
+      tags: [Organizations]
+      summary: Create organization
+      security:
+        - BearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name:
+                  type: string
+      responses:
+        '201':
+          description: Organization created
+
+  /api/v1/orgs/{orgID}/projects:
+    get:
+      tags: [Projects]
+      summary: List projects
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: orgID
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Project list
+    post:
+      tags: [Projects]
+      summary: Create project
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: orgID
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [name]
+              properties:
+                name:
+                  type: string
+                region:
+                  type: string
+      responses:
+        '201':
+          description: Project created
+
+  /api/v1/orgs/{orgID}/projects/{projectID}/deploy:
+    post:
+      tags: [Deployments]
+      summary: Trigger deployment
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: orgID
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: projectID
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '202':
+          description: Deployment queued
+
+  /api/v1/orgs/{orgID}/deployments/{deploymentID}:
+    get:
+      tags: [Deployments]
+      summary: Get deployment
+      security:
+        - BearerAuth: []
+      parameters:
+        - name: orgID
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: deploymentID
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Deployment details
+
+  /webhooks/github:
+    post:
+      tags: [Webhooks]
+      summary: GitHub webhook receiver
+      parameters:
+        - name: X-Hub-Signature-256
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Webhook accepted
+
+  /health/live:
+    get:
+      summary: Liveness probe (admin port 9090)
+      responses:
+        '200':
+          description: Process alive
+
+  /health/ready:
+    get:
+      summary: Readiness probe (admin port 9090)
+      responses:
+        '200':
+          description: Dependencies healthy
+        '503':
+          description: Not ready

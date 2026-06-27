@@ -1,0 +1,10 @@
+{
+  "name": "@agnivo/proxy-manager",
+  "private": true,
+  "scripts": {
+    "dev": "go run ./cmd/proxy-manager",
+    "build": "go build -o bin/proxy-manager ./cmd/proxy-manager",
+    "test": "go test ./...",
+    "lint": "go vet ./..."
+  }
+}

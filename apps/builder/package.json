@@ -1,0 +1,10 @@
+{
+  "name": "@agnivo/builder",
+  "private": true,
+  "scripts": {
+    "dev": "go run ./cmd/builder",
+    "build": "go build -o bin/builder ./cmd/builder",
+    "test": "go test ./...",
+    "lint": "go vet ./..."
+  }
+}

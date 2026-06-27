@@ -1,0 +1,10 @@
+{
+  "name": "@agnivo/deployer",
+  "private": true,
+  "scripts": {
+    "dev": "go run ./cmd/deployer",
+    "build": "go build -o bin/deployer ./cmd/deployer",
+    "test": "go test ./...",
+    "lint": "go vet ./..."
+  }
+}

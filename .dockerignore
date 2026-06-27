@@ -1,0 +1,38 @@
+# Git
+.git
+.gitignore
+
+# Dependencies & caches
+node_modules
+.pnpm-store
+.turbo
+
+# Build outputs
+.next
+out
+dist
+bin
+coverage
+*.test
+*.out
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# IDE & OS
+.idea
+.vscode
+.DS_Store
+*.swp
+*.swo
+
+# Docs & misc
+*.md
+!README.md
+*.docx
+
+# Docker
+docker-compose*.yml
+Dockerfile*

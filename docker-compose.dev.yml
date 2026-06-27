@@ -1,0 +1,49 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend.dev.Dockerfile
+    container_name: agnivo-backend-dev
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      PORT: 8080
+    volumes:
+      - ./apps/backend:/src/apps/backend
+      - go-mod-cache:/go/pkg/mod
+    networks:
+      - agnivo
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/web.dev.Dockerfile
+    container_name: agnivo-web-dev
+    ports:
+      - "${WEB_PORT:-3000}:3000"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8080}
+      WATCHPACK_POLLING: "true"
+    volumes:
+      - .:/app
+      - web-node-modules:/app/node_modules
+      - web-app-node-modules:/app/apps/web/node_modules
+    depends_on:
+      - backend
+    networks:
+      - agnivo
+
+networks:
+  agnivo:
+    driver: bridge
+
+volumes:
+  go-mod-cache:
+  web-node-modules:
+  web-app-node-modules:

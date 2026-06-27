@@ -1,0 +1,10 @@
+{
+  "name": "@agnivo/runtime-agent",
+  "private": true,
+  "scripts": {
+    "dev": "go run ./cmd/runtime-agent",
+    "build": "go build -o bin/runtime-agent ./cmd/runtime-agent",
+    "test": "go test ./...",
+    "lint": "go vet ./..."
+  }
+}

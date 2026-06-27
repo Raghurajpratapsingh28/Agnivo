@@ -1,0 +1,25 @@
+run:
+  timeout: 5m
+  tests: true
+  skip-dirs:
+    - graphify-out
+
+linters:
+  enable:
+    - errcheck
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - bodyclose
+    - misspell
+
+linters-settings:
+  govet:
+    enable:
+      - shadow
+
+issues:
+  exclude-use-default: false
+  max-issues-per-linter: 0
+  max-same-issues: 0
