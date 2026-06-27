@@ -3,10 +3,10 @@ package secrets
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/application/controlplane/crypto"
-	"github.com/agnivo/agnivo/packages/application/controlplane/envvar"
-	"github.com/agnivo/agnivo/packages/application/controlplane/secret"
-	"github.com/agnivo/agnivo/packages/application/deploy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/crypto"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/envvar"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/secret"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/model"
 )
 
 // Loader decrypts env vars and secrets for runtime injection.

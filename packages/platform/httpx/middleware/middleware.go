@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/cors"
 )

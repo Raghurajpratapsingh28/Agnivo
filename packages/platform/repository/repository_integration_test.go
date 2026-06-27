@@ -6,10 +6,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/repository"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/repository"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

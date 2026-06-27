@@ -4,8 +4,8 @@ import (
 	"errors"
 	"net/http"
 
-	platerr "github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/validation"
+	platerr "github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/validation"
 )
 
 // APIError is a transport-level error with a stable machine-readable code.
@@ -32,11 +32,11 @@ func (e *APIError) WithDetails(d any) *APIError {
 
 // Common, reusable errors.
 var (
-	ErrBadRequest   = func(msg string) *APIError { return NewAPIError(http.StatusBadRequest, "bad_request", msg) }
-	ErrUnauthorized = func(msg string) *APIError { return NewAPIError(http.StatusUnauthorized, "unauthorized", msg) }
-	ErrForbidden    = func(msg string) *APIError { return NewAPIError(http.StatusForbidden, "forbidden", msg) }
-	ErrNotFound     = func(msg string) *APIError { return NewAPIError(http.StatusNotFound, "not_found", msg) }
-	ErrConflict     = func(msg string) *APIError { return NewAPIError(http.StatusConflict, "conflict", msg) }
+	ErrBadRequest    = func(msg string) *APIError { return NewAPIError(http.StatusBadRequest, "bad_request", msg) }
+	ErrUnauthorized  = func(msg string) *APIError { return NewAPIError(http.StatusUnauthorized, "unauthorized", msg) }
+	ErrForbidden     = func(msg string) *APIError { return NewAPIError(http.StatusForbidden, "forbidden", msg) }
+	ErrNotFound      = func(msg string) *APIError { return NewAPIError(http.StatusNotFound, "not_found", msg) }
+	ErrConflict      = func(msg string) *APIError { return NewAPIError(http.StatusConflict, "conflict", msg) }
 	ErrUnprocessable = func(msg string) *APIError {
 		return NewAPIError(http.StatusUnprocessableEntity, "unprocessable_entity", msg)
 	}

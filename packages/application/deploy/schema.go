@@ -3,8 +3,8 @@
 package deploy
 
 import (
-	"github.com/agnivo/agnivo/packages/application/build"
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/build"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
 )
 
 const SchemaDDL = `

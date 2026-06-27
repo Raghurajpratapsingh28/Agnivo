@@ -4,7 +4,7 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 	"github.com/google/uuid"
 )
 

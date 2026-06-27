@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	schedevents "github.com/agnivo/agnivo/packages/application/scheduler/events"
-	"github.com/agnivo/agnivo/packages/platform/events"
+	schedevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
 	"github.com/stretchr/testify/assert"
 )
 

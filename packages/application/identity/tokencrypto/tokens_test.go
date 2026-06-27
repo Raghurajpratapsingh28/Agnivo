@@ -3,7 +3,7 @@ package tokencrypto_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/identity/tokencrypto"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/tokencrypto"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

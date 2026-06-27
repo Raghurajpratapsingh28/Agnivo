@@ -8,7 +8,7 @@ import (
 	"compress/gzip"
 	"io"
 
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 )
 
 // Gzip compresses data at the given level (gzip.BestSpeed..gzip.BestCompression,

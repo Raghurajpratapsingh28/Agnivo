@@ -6,7 +6,7 @@ package logger
 import (
 	"fmt"
 
-	"github.com/agnivo/agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )

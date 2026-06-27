@@ -1,8 +1,8 @@
 package http
 
 import (
-	idhttp "github.com/agnivo/agnivo/packages/application/identity/http"
-	"github.com/agnivo/agnivo/packages/application/identity/rbac"
+	idhttp "github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/http"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/rbac"
 	"github.com/go-chi/chi/v5"
 )
 

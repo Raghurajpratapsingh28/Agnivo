@@ -3,7 +3,7 @@
 package v1
 
 import (
-	"github.com/agnivo/agnivo/packages/platform/httpx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/httpx"
 	"github.com/go-chi/chi/v5"
 	"go.uber.org/zap"
 )

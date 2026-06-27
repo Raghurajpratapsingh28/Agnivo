@@ -7,8 +7,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/caddy"
-	"github.com/agnivo/agnivo/packages/application/proxy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/caddy"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/model"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"

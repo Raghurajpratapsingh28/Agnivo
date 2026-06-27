@@ -1,4 +1,4 @@
-module github.com/agnivo/agnivo
+module github.com/Raghurajpratapsingh28/Agnivo
 
 go 1.25.0
 

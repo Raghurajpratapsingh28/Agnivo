@@ -1,6 +1,6 @@
 # Dependency Guide
 
-Agnivo uses a single Go module (`github.com/agnivo/agnivo`) with Go 1.25.
+Agnivo uses a single Go module (`github.com/Raghurajpratapsingh28/Agnivo`) with Go 1.25.
 
 ## Direct Dependencies
 

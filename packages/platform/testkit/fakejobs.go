@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/idx"
-	"github.com/agnivo/agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
 )
 
 // FakeJobQueue is an in-memory job queue for unit tests. It mirrors the core

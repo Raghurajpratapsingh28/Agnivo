@@ -3,8 +3,8 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/agnivo/agnivo/packages/platform/dto"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/dto"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 )
 
 const defaultMaxBodyBytes int64 = 10 << 20 // 10 MiB

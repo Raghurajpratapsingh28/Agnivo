@@ -119,8 +119,8 @@ import (
     "github.com/go-chi/chi/v5"
     "go.uber.org/zap"
 
-    "github.com/agnivo/agnivo/packages/platform/errors"
-    "github.com/agnivo/agnivo/packages/application/ops/model"
+    "github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+    "github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/model"
 )
 ```
 

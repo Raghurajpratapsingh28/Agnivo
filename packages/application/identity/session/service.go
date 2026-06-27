@@ -3,8 +3,8 @@ package session
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/application/identity/audit"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/audit"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 )
 
 // Service handles session management.

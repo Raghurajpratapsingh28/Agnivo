@@ -3,10 +3,10 @@ package httpx
 import (
 	"net/http"
 
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/health"
-	mw "github.com/agnivo/agnivo/packages/platform/httpx/middleware"
-	"github.com/agnivo/agnivo/packages/platform/observability/metrics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/health"
+	mw "github.com/Raghurajpratapsingh28/Agnivo/packages/platform/httpx/middleware"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/observability/metrics"
 	"github.com/go-chi/chi/v5"
 	"go.uber.org/zap"
 )

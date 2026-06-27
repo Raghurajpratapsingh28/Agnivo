@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	idhttp "github.com/agnivo/agnivo/packages/application/identity/http"
-	"github.com/agnivo/agnivo/packages/application/identity/jwt"
-	"github.com/agnivo/agnivo/packages/application/identity/session"
-	"github.com/agnivo/agnivo/packages/application/identity/tenant"
+	idhttp "github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/http"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/jwt"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/session"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/tenant"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

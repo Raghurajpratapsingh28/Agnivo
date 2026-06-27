@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/ops/model"
-	"github.com/agnivo/agnivo/packages/application/ops/notification"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/notification"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -29,7 +29,10 @@ func TestNotifBuilders(t *testing.T) {
 	assert.Contains(t, ssl.Body, "7 days")
 }
 
-type mockSender struct{ called bool; err error }
+type mockSender struct {
+	called bool
+	err    error
+}
 
 func (m *mockSender) Send(_ context.Context, _ model.Notification) error {
 	m.called = true

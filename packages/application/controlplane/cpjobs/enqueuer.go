@@ -5,26 +5,26 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
 )
 
 // Queue names.
 const (
-	QueueBuilds       = "builds"
-	QueueDeployments  = "deployments"
-	QueueDomains      = "domains"
+	QueueBuilds      = "builds"
+	QueueDeployments = "deployments"
+	QueueDomains     = "domains"
 )
 
 // Job types consumed by builder, deployer, and proxy-manager.
 const (
-	TypeBuild             = "build.run"
-	TypeDeploy            = "deploy.run"
-	TypeRollback          = "deploy.rollback"
-	TypeDeleteDeployment  = "deploy.delete"
-	TypeSleep             = "project.sleep"
-	TypeWake              = "project.wake"
-	TypeDomainVerify      = "domain.verify"
-	TypeSSLRequest        = "domain.ssl_request"
+	TypeBuild            = "build.run"
+	TypeDeploy           = "deploy.run"
+	TypeRollback         = "deploy.rollback"
+	TypeDeleteDeployment = "deploy.delete"
+	TypeSleep            = "project.sleep"
+	TypeWake             = "project.wake"
+	TypeDomainVerify     = "domain.verify"
+	TypeSSLRequest       = "domain.ssl_request"
 )
 
 // Payload is the standard job envelope.

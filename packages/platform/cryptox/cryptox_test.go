@@ -4,8 +4,8 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/platform/cryptox"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/cryptox"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

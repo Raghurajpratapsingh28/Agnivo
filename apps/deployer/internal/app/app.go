@@ -4,8 +4,8 @@ package app
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/application/deploy"
-	"github.com/agnivo/agnivo/packages/platform/bootstrap"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/bootstrap"
 )
 
 // Register attaches the deployer job worker and internal API to the application.

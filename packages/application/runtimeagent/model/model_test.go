@@ -3,7 +3,7 @@ package model_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/runtimeagent/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/runtimeagent/model"
 	"github.com/stretchr/testify/assert"
 )
 

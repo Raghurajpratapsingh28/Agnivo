@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/model"
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
-	"github.com/agnivo/agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
 	"github.com/jackc/pgx/v5"
 )
 

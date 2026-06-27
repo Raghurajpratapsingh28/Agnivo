@@ -3,7 +3,7 @@ package hashx_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/platform/hashx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/hashx"
 	"github.com/stretchr/testify/assert"
 )
 

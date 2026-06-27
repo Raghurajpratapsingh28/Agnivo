@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/model"
-	"github.com/agnivo/agnivo/packages/application/proxy/traffic"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/traffic"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -21,7 +21,7 @@ func (f *fakeCaddySwitcher) UpsertRoute(_ context.Context, cfg model.CaddyRouteC
 
 func TestSwitchRequest_Validation(t *testing.T) {
 	req := model.TrafficSwitchRequest{
-		Hostname:    "",
+		Hostname:     "",
 		DeploymentID: "",
 	}
 	assert.Empty(t, req.Hostname)
@@ -44,8 +44,8 @@ func TestSwitcher_InterfaceCompat(t *testing.T) {
 
 func TestCanaryWeight_Bounds(t *testing.T) {
 	tests := []struct {
-		weight  int
-		wantOK  bool
+		weight int
+		wantOK bool
 	}{
 		{0, false},
 		{1, true},

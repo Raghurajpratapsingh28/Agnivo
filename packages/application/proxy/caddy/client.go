@@ -16,8 +16,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/model"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 	"go.uber.org/zap"
 )
 
@@ -64,10 +64,10 @@ type caddyServer struct {
 }
 
 type caddyRoute struct {
-	ID      string          `json:"@id,omitempty"`
-	Match   []caddyMatch    `json:"match"`
-	Handle  []json.RawMessage `json:"handle"`
-	Terminal bool           `json:"terminal,omitempty"`
+	ID       string            `json:"@id,omitempty"`
+	Match    []caddyMatch      `json:"match"`
+	Handle   []json.RawMessage `json:"handle"`
+	Terminal bool              `json:"terminal,omitempty"`
 }
 
 type caddyMatch struct {
@@ -83,31 +83,31 @@ type caddyHTTPSRedirect struct {
 
 // caddyReverseProxy is the reverse_proxy handler config.
 type caddyReverseProxy struct {
-	Handler   string              `json:"handler"`
-	Upstreams []caddyUpstream     `json:"upstreams"`
-	Transport *caddyTransport     `json:"transport,omitempty"`
-	LoadBalancing *caddyLB        `json:"load_balancing,omitempty"`
-	Headers   *caddyHeadersOp     `json:"headers,omitempty"`
-	HealthChecks *caddyHealthCheck `json:"health_checks,omitempty"`
+	Handler       string            `json:"handler"`
+	Upstreams     []caddyUpstream   `json:"upstreams"`
+	Transport     *caddyTransport   `json:"transport,omitempty"`
+	LoadBalancing *caddyLB          `json:"load_balancing,omitempty"`
+	Headers       *caddyHeadersOp   `json:"headers,omitempty"`
+	HealthChecks  *caddyHealthCheck `json:"health_checks,omitempty"`
 }
 
 type caddyUpstream struct {
-	Dial   string  `json:"dial"`
-	Weight int     `json:"weight,omitempty"`
+	Dial   string `json:"dial"`
+	Weight int    `json:"weight,omitempty"`
 }
 
 type caddyTransport struct {
-	Protocol         string `json:"protocol"`
-	DialTimeout      string `json:"dial_timeout,omitempty"`
-	ResponseTimeout  string `json:"response_header_timeout,omitempty"`
-	KeepAlive        *caddyKeepAlive `json:"keep_alive,omitempty"`
+	Protocol        string          `json:"protocol"`
+	DialTimeout     string          `json:"dial_timeout,omitempty"`
+	ResponseTimeout string          `json:"response_header_timeout,omitempty"`
+	KeepAlive       *caddyKeepAlive `json:"keep_alive,omitempty"`
 }
 
 type caddyKeepAlive struct {
-	Enabled           *bool `json:"enabled,omitempty"`
-	ProbeInterval     string `json:"probe_interval,omitempty"`
-	MaxIdleConns      int    `json:"max_idle_conns,omitempty"`
-	MaxIdleConnsPerHost int  `json:"max_idle_conns_per_host,omitempty"`
+	Enabled             *bool  `json:"enabled,omitempty"`
+	ProbeInterval       string `json:"probe_interval,omitempty"`
+	MaxIdleConns        int    `json:"max_idle_conns,omitempty"`
+	MaxIdleConnsPerHost int    `json:"max_idle_conns_per_host,omitempty"`
 }
 
 type caddyLB struct {
@@ -154,7 +154,7 @@ type caddyAutomation struct {
 }
 
 type caddyAutomationPolicy struct {
-	Subjects []string `json:"subjects,omitempty"`
+	Subjects []string      `json:"subjects,omitempty"`
 	Issuers  []caddyIssuer `json:"issuers,omitempty"`
 }
 
@@ -393,9 +393,9 @@ func (c *Client) buildRoute(cfg model.CaddyRouteConfig) (caddyRoute, error) {
 	}
 
 	route := caddyRoute{
-		ID:      routeTagID(cfg.Hostname),
-		Match:   []caddyMatch{{Host: []string{cfg.Hostname}}},
-		Handle:  handlers,
+		ID:       routeTagID(cfg.Hostname),
+		Match:    []caddyMatch{{Host: []string{cfg.Hostname}}},
+		Handle:   handlers,
 		Terminal: true,
 	}
 	return route, nil

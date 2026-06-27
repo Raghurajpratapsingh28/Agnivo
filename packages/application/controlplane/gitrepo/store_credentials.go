@@ -3,7 +3,7 @@ package gitrepo
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
 )
 
 // GetWithCredentials returns a repository including encrypted credential blobs for worker use.

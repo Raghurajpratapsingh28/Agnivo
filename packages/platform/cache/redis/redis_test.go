@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/cache/redis"
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/cache/redis"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

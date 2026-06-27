@@ -6,7 +6,7 @@ package bootstrap
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
 	"github.com/google/wire"
 )
 

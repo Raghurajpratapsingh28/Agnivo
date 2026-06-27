@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 	"golang.org/x/crypto/argon2"
 )
 

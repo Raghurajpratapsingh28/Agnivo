@@ -6,72 +6,72 @@ import (
 	"strings"
 	"time"
 
-	buildmodel "github.com/agnivo/agnivo/packages/application/build/buildstore"
-	"github.com/agnivo/agnivo/packages/application/controlplane/cpevents"
-	"github.com/agnivo/agnivo/packages/application/controlplane/cpjobs"
-	"github.com/agnivo/agnivo/packages/application/controlplane/deployment"
-	"github.com/agnivo/agnivo/packages/application/controlplane/project"
-	deploycancel "github.com/agnivo/agnivo/packages/application/deploy/cancel"
-	"github.com/agnivo/agnivo/packages/application/deploy/deploystore"
-	deployecr "github.com/agnivo/agnivo/packages/application/deploy/ecr"
-	deployevents "github.com/agnivo/agnivo/packages/application/deploy/events"
-	"github.com/agnivo/agnivo/packages/application/deploy/health"
-	deploymetrics "github.com/agnivo/agnivo/packages/application/deploy/metrics"
-	deploymodel "github.com/agnivo/agnivo/packages/application/deploy/model"
-	"github.com/agnivo/agnivo/packages/application/deploy/rollback"
-	"github.com/agnivo/agnivo/packages/application/deploy/runtime"
-	"github.com/agnivo/agnivo/packages/application/deploy/scheduler"
-	"github.com/agnivo/agnivo/packages/application/deploy/secrets"
-	"github.com/agnivo/agnivo/packages/application/deploy/strategy"
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	buildmodel "github.com/Raghurajpratapsingh28/Agnivo/packages/application/build/buildstore"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/cpevents"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/cpjobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/deployment"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/project"
+	deploycancel "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/cancel"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/deploystore"
+	deployecr "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/ecr"
+	deployevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/health"
+	deploymetrics "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/metrics"
+	deploymodel "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/rollback"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/runtime"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/scheduler"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/secrets"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/strategy"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 )
 
 // Pipeline orchestrates deployment execution.
 type Pipeline struct {
-	cfg          config.Deployer
-	deployments  *deployment.Repository
-	projects     *project.Repository
-	artifacts    *buildmodel.ArtifactRepository
-	executions   *deploystore.Repository
-	containers   *deploystore.ContainerRepository
-	healthRepo   *deploystore.HealthRepository
-	events       *deployevents.Publisher
-	cpEvents     *cpevents.Publisher
-	secrets      *secrets.Loader
-	puller       *deployecr.Puller
-	scheduler    *scheduler.Client
-	runtime      runtime.Driver
-	health       *health.Checker
-	strategies   *strategy.Registry
-	rollback     *rollback.Engine
-	metrics      *deploymetrics.Metrics
-	cancels      *deploycancel.Registry
-	workerID     string
+	cfg         config.Deployer
+	deployments *deployment.Repository
+	projects    *project.Repository
+	artifacts   *buildmodel.ArtifactRepository
+	executions  *deploystore.Repository
+	containers  *deploystore.ContainerRepository
+	healthRepo  *deploystore.HealthRepository
+	events      *deployevents.Publisher
+	cpEvents    *cpevents.Publisher
+	secrets     *secrets.Loader
+	puller      *deployecr.Puller
+	scheduler   *scheduler.Client
+	runtime     runtime.Driver
+	health      *health.Checker
+	strategies  *strategy.Registry
+	rollback    *rollback.Engine
+	metrics     *deploymetrics.Metrics
+	cancels     *deploycancel.Registry
+	workerID    string
 }
 
 // Deps wires pipeline dependencies.
 type Deps struct {
-	Config       config.Deployer
-	Deployments  *deployment.Repository
-	Projects     *project.Repository
-	Artifacts    *buildmodel.ArtifactRepository
-	Executions   *deploystore.Repository
-	Containers   *deploystore.ContainerRepository
-	HealthRepo   *deploystore.HealthRepository
-	Events       *deployevents.Publisher
-	CPEvents     *cpevents.Publisher
-	Secrets      *secrets.Loader
-	Puller       *deployecr.Puller
-	Scheduler    *scheduler.Client
-	Runtime      runtime.Driver
-	Health       *health.Checker
-	Strategies   *strategy.Registry
-	Rollback     *rollback.Engine
-	Metrics      *deploymetrics.Metrics
-	Cancels      *deploycancel.Registry
-	WorkerID     string
+	Config      config.Deployer
+	Deployments *deployment.Repository
+	Projects    *project.Repository
+	Artifacts   *buildmodel.ArtifactRepository
+	Executions  *deploystore.Repository
+	Containers  *deploystore.ContainerRepository
+	HealthRepo  *deploystore.HealthRepository
+	Events      *deployevents.Publisher
+	CPEvents    *cpevents.Publisher
+	Secrets     *secrets.Loader
+	Puller      *deployecr.Puller
+	Scheduler   *scheduler.Client
+	Runtime     runtime.Driver
+	Health      *health.Checker
+	Strategies  *strategy.Registry
+	Rollback    *rollback.Engine
+	Metrics     *deploymetrics.Metrics
+	Cancels     *deploycancel.Registry
+	WorkerID    string
 }
 
 // NewPipeline constructs a deployment pipeline.

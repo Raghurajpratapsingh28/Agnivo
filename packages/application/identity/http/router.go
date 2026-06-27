@@ -1,7 +1,7 @@
 package http
 
 import (
-	"github.com/agnivo/agnivo/packages/application/identity/rbac"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/rbac"
 	"github.com/go-chi/chi/v5"
 )
 

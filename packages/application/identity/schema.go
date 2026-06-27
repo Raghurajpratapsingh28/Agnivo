@@ -3,7 +3,7 @@
 // audit logging. Every other backend module depends on it for security.
 package identity
 
-import "github.com/agnivo/agnivo/packages/platform/database/postgres"
+import "github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
 
 // SchemaDDL is the complete identity schema, applied idempotently via
 // postgres.DB.Migrate. Table names are prefixed with identity_ to avoid

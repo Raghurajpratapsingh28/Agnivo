@@ -3,7 +3,7 @@ package metrics_test
 import (
 	"testing"
 
-	opsmetrics "github.com/agnivo/agnivo/packages/application/ops/metrics"
+	opsmetrics "github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/metrics"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"

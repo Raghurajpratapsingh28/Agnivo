@@ -4,8 +4,8 @@
 package ops
 
 import (
-	"github.com/agnivo/agnivo/packages/application/proxy"
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
 )
 
 const SchemaDDL = `

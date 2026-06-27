@@ -8,18 +8,18 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 )
 
 // Placement is a scheduler placement decision.
 type Placement struct {
-	Host      string `json:"host"`
-	Port      int    `json:"port"`
-	NodeID    string `json:"node_id"`
-	Region    string `json:"region"`
-	AgentURL  string `json:"agent_url,omitempty"`
-	Reserved  bool   `json:"reserved"`
+	Host     string `json:"host"`
+	Port     int    `json:"port"`
+	NodeID   string `json:"node_id"`
+	Region   string `json:"region"`
+	AgentURL string `json:"agent_url,omitempty"`
+	Reserved bool   `json:"reserved"`
 }
 
 // Client requests placement from the scheduler service.
@@ -33,8 +33,8 @@ type Client struct {
 func NewClient(cfg config.Deployer) *Client {
 	local := cfg.SchedulerURL == ""
 	return &Client{
-		baseURL: cfg.SchedulerURL,
-		localMode: local,
+		baseURL:    cfg.SchedulerURL,
+		localMode:  local,
 		httpClient: &http.Client{Timeout: 30 * time.Second},
 	}
 }

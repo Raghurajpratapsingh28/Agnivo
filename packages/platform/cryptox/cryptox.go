@@ -10,7 +10,7 @@ import (
 	"crypto/rand"
 	"io"
 
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 )
 
 // KeySize is the required key length in bytes for AES-256.

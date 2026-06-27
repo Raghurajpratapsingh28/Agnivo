@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/agnivo/agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
 )
 
 // RandomString returns a random alphanumeric string of length n.

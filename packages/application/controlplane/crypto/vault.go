@@ -4,9 +4,9 @@ import (
 	"encoding/base64"
 	"encoding/hex"
 
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/cryptox"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/cryptox"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 )
 
 // Vault encrypts and decrypts sensitive values at rest.

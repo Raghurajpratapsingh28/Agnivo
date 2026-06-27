@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/agnivo/agnivo/packages/application/scheduler/engine"
-	"github.com/agnivo/agnivo/packages/application/scheduler/model"
-	"github.com/agnivo/agnivo/packages/application/scheduler/store"
-	schedmetrics "github.com/agnivo/agnivo/packages/application/scheduler/metrics"
-	"github.com/agnivo/agnivo/packages/platform/dto"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/engine"
+	schedmetrics "github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/metrics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/dto"
 	"github.com/go-chi/chi/v5"
 )
 

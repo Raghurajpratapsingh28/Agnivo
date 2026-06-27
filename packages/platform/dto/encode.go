@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/logger"
-	"github.com/agnivo/agnivo/packages/platform/validation"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/validation"
 )
 
 // WriteJSON marshals body and writes it with the given status and a JSON

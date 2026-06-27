@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/middleware"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/middleware"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

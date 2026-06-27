@@ -3,7 +3,7 @@ package middleware
 import (
 	"net/http"
 
-	idhttp "github.com/agnivo/agnivo/packages/application/identity/http"
+	idhttp "github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/http"
 )
 
 // StreamAuth validates JWT/API-key authentication for /stream/v1 routes.

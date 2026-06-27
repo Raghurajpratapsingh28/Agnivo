@@ -4,9 +4,9 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
-	"github.com/agnivo/agnivo/packages/platform/events"
-	"github.com/agnivo/agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
 )
 
 const (

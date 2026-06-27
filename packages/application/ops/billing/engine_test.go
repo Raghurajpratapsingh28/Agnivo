@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/ops/billing"
-	"github.com/agnivo/agnivo/packages/application/ops/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/billing"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/model"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

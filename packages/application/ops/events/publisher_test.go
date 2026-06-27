@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	opsevents "github.com/agnivo/agnivo/packages/application/ops/events"
-	"github.com/agnivo/agnivo/packages/platform/events"
+	opsevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

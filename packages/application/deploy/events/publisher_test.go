@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	deployevents "github.com/agnivo/agnivo/packages/application/deploy/events"
-	"github.com/agnivo/agnivo/packages/platform/events"
+	deployevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
 	"github.com/stretchr/testify/assert"
 )
 

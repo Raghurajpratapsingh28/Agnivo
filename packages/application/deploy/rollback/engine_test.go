@@ -5,9 +5,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/deploy/model"
-	"github.com/agnivo/agnivo/packages/application/deploy/rollback"
-	"github.com/agnivo/agnivo/packages/application/deploy/runtime"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/rollback"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/runtime"
 	"github.com/stretchr/testify/assert"
 )
 

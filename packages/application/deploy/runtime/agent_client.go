@@ -9,8 +9,8 @@ import (
 	"net/http"
 	"time"
 
-	deploymodel "github.com/agnivo/agnivo/packages/application/deploy/model"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	deploymodel "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 )
 
 type agentHTTP struct {

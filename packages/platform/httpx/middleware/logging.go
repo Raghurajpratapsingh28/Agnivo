@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 	"github.com/go-chi/chi/v5/middleware"
 	"go.uber.org/zap"
 )

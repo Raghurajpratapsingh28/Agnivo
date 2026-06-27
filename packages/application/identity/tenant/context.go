@@ -7,7 +7,7 @@ package tenant
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 )
 
 type ctxKey int

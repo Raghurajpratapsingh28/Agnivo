@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/agnivo/agnivo/apps/builder/internal/app"
-	"github.com/agnivo/agnivo/packages/platform/bootstrap"
+	"github.com/Raghurajpratapsingh28/Agnivo/apps/builder/internal/app"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/bootstrap"
 )
 
 func main() {

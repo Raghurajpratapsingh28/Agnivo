@@ -8,39 +8,39 @@ import (
 	"context"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/caddy"
-	"github.com/agnivo/agnivo/packages/application/proxy/cert"
-	"github.com/agnivo/agnivo/packages/application/proxy/dns"
-	proxyevents "github.com/agnivo/agnivo/packages/application/proxy/events"
-	proxyhttp "github.com/agnivo/agnivo/packages/application/proxy/http"
-	proxmetrics "github.com/agnivo/agnivo/packages/application/proxy/metrics"
-	"github.com/agnivo/agnivo/packages/application/proxy/preview"
-	"github.com/agnivo/agnivo/packages/application/proxy/recovery"
-	"github.com/agnivo/agnivo/packages/application/proxy/route"
-	"github.com/agnivo/agnivo/packages/application/proxy/store"
-	"github.com/agnivo/agnivo/packages/application/proxy/streaming"
-	"github.com/agnivo/agnivo/packages/application/proxy/traffic"
-	"github.com/agnivo/agnivo/packages/application/controlplane/cpjobs"
-	"github.com/agnivo/agnivo/packages/platform/bootstrap"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/events"
-	"github.com/agnivo/agnivo/packages/platform/jobs"
-	"github.com/agnivo/agnivo/packages/platform/lifecycle"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/cpjobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/caddy"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/cert"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/dns"
+	proxyevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/events"
+	proxyhttp "github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/http"
+	proxmetrics "github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/metrics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/preview"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/recovery"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/route"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/streaming"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/traffic"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/bootstrap"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/lifecycle"
 	"github.com/go-chi/chi/v5"
 	"go.uber.org/zap"
 )
 
 // Module is the proxy-manager composition root.
 type Module struct {
-	Engine      *route.Engine
-	Switcher    *traffic.Switcher
-	Preview     *preview.Manager
-	Cert        *cert.Manager
-	Reconciler  *recovery.Reconciler
-	Hub         *streaming.Hub
-	HTTP        *proxyhttp.Handlers
-	Metrics     *proxmetrics.Metrics
-	Publisher   *proxyevents.Publisher
+	Engine     *route.Engine
+	Switcher   *traffic.Switcher
+	Preview    *preview.Manager
+	Cert       *cert.Manager
+	Reconciler *recovery.Reconciler
+	Hub        *streaming.Hub
+	HTTP       *proxyhttp.Handlers
+	Metrics    *proxmetrics.Metrics
+	Publisher  *proxyevents.Publisher
 }
 
 // Init wires the complete edge networking module.
@@ -158,7 +158,6 @@ func Init(ctx context.Context, app *bootstrap.App) (*Module, error) {
 		Publisher:  pub,
 	}, nil
 }
-
 
 // ─────────────────────────────── Domain job worker ───────────────────────────
 

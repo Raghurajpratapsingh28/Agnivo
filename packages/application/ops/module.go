@@ -8,43 +8,43 @@ import (
 	"context"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/ops/analytics"
-	"github.com/agnivo/agnivo/packages/application/ops/audit"
-	"github.com/agnivo/agnivo/packages/application/ops/autosleep"
-	"github.com/agnivo/agnivo/packages/application/ops/backup"
-	"github.com/agnivo/agnivo/packages/application/ops/billing"
-	"github.com/agnivo/agnivo/packages/application/ops/cleanup"
-	"github.com/agnivo/agnivo/packages/application/ops/cron"
-	opsevents "github.com/agnivo/agnivo/packages/application/ops/events"
-	opsjobs "github.com/agnivo/agnivo/packages/application/ops/jobs"
-	opsmetrics "github.com/agnivo/agnivo/packages/application/ops/metrics"
-	"github.com/agnivo/agnivo/packages/application/ops/metering"
-	"github.com/agnivo/agnivo/packages/application/ops/notification"
-	"github.com/agnivo/agnivo/packages/application/ops/quota"
-	"github.com/agnivo/agnivo/packages/application/ops/store"
-	"github.com/agnivo/agnivo/packages/platform/bootstrap"
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/events"
-	"github.com/agnivo/agnivo/packages/platform/idx"
-	"github.com/agnivo/agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/analytics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/audit"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/autosleep"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/backup"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/billing"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/cleanup"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/cron"
+	opsevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/events"
+	opsjobs "github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/metering"
+	opsmetrics "github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/metrics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/notification"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/quota"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/bootstrap"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
 	"go.uber.org/zap"
 )
 
 // Module is the ops layer composition root.
 type Module struct {
-	Billing    *billing.Engine
-	Metering   *metering.Collector
-	Quota      *quota.Enforcer
-	Notifier   *notification.Dispatcher
-	Backup     *backup.Manager
-	GC         *cleanup.GC
-	Analytics  *analytics.Aggregator
-	Audit      *audit.Logger
-	AutoSleep  *autosleep.Manager
-	Cron       *cron.Scheduler
-	Publisher  *opsevents.Publisher
-	Metrics    *opsmetrics.Metrics
+	Billing   *billing.Engine
+	Metering  *metering.Collector
+	Quota     *quota.Enforcer
+	Notifier  *notification.Dispatcher
+	Backup    *backup.Manager
+	GC        *cleanup.GC
+	Analytics *analytics.Aggregator
+	Audit     *audit.Logger
+	AutoSleep *autosleep.Manager
+	Cron      *cron.Scheduler
+	Publisher *opsevents.Publisher
+	Metrics   *opsmetrics.Metrics
 }
 
 // Init wires the complete Platform Operations Module.
@@ -140,12 +140,12 @@ func registerWorkers(_ context.Context, app *bootstrap.App, mod *Module, queue *
 
 	workerCfg := func(q string, concurrency int) jobs.WorkerConfig {
 		return jobs.WorkerConfig{
-			Queue:       q,
-			Concurrency: concurrency,
-			BatchSize:   concurrency * 2,
+			Queue:        q,
+			Concurrency:  concurrency,
+			BatchSize:    concurrency * 2,
 			PollInterval: time.Second,
-			Visibility:  5 * time.Minute,
-			Logger:      log,
+			Visibility:   5 * time.Minute,
+			Logger:       log,
 		}
 	}
 

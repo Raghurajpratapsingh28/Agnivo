@@ -6,10 +6,10 @@ import (
 	"context"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/ops/model"
-	"github.com/agnivo/agnivo/packages/application/ops/store"
-	"github.com/agnivo/agnivo/packages/application/controlplane/cpjobs"
-	"github.com/agnivo/agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/cpjobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
 	"go.uber.org/zap"
 )
 

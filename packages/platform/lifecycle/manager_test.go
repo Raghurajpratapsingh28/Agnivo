@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/lifecycle"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/lifecycle"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"
 )

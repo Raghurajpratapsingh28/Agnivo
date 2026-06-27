@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 	jwtlib "github.com/golang-jwt/jwt/v5"
 )
 

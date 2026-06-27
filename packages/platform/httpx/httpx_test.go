@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/platform/httpx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/httpx"
 	"github.com/stretchr/testify/require"
 )
 

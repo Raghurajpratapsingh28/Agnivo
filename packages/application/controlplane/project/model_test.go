@@ -3,7 +3,7 @@ package project_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/controlplane/project"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/project"
 	"github.com/stretchr/testify/assert"
 )
 

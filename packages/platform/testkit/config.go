@@ -5,7 +5,7 @@ package testkit
 import (
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
 )
 
 // NewConfig returns a fully-populated, valid configuration for tests with all

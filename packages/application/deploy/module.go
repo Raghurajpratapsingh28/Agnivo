@@ -4,34 +4,34 @@ import (
 	"context"
 	"fmt"
 
-	deployhttp "github.com/agnivo/agnivo/packages/application/deploy/http"
-	"github.com/agnivo/agnivo/packages/application/build/buildstore"
-	"github.com/agnivo/agnivo/packages/application/controlplane/cpevents"
-	"github.com/agnivo/agnivo/packages/application/controlplane/cpjobs"
-	"github.com/agnivo/agnivo/packages/application/controlplane/deployment"
-	"github.com/agnivo/agnivo/packages/application/controlplane/envvar"
-	"github.com/agnivo/agnivo/packages/application/controlplane/project"
-	"github.com/agnivo/agnivo/packages/application/controlplane/secret"
-	"github.com/agnivo/agnivo/packages/application/controlplane/crypto"
-	deploycancel "github.com/agnivo/agnivo/packages/application/deploy/cancel"
-	"github.com/agnivo/agnivo/packages/application/deploy/deploystore"
-	deployecr "github.com/agnivo/agnivo/packages/application/deploy/ecr"
-	deployevents "github.com/agnivo/agnivo/packages/application/deploy/events"
-	"github.com/agnivo/agnivo/packages/application/deploy/executor"
-	"github.com/agnivo/agnivo/packages/application/deploy/health"
-	deploymetrics "github.com/agnivo/agnivo/packages/application/deploy/metrics"
-	"github.com/agnivo/agnivo/packages/application/deploy/recovery"
-	"github.com/agnivo/agnivo/packages/application/deploy/rollback"
-	"github.com/agnivo/agnivo/packages/application/deploy/runtime"
-	"github.com/agnivo/agnivo/packages/application/deploy/scheduler"
-	"github.com/agnivo/agnivo/packages/application/deploy/secrets"
-	"github.com/agnivo/agnivo/packages/application/deploy/strategy"
-	deployworker "github.com/agnivo/agnivo/packages/application/deploy/worker"
-	"github.com/agnivo/agnivo/packages/platform/bootstrap"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	pevents "github.com/agnivo/agnivo/packages/platform/events"
-	"github.com/agnivo/agnivo/packages/platform/jobs"
-	"github.com/agnivo/agnivo/packages/platform/lifecycle"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/build/buildstore"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/cpevents"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/cpjobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/crypto"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/deployment"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/envvar"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/project"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/secret"
+	deploycancel "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/cancel"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/deploystore"
+	deployecr "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/ecr"
+	deployevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/executor"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/health"
+	deployhttp "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/http"
+	deploymetrics "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/metrics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/recovery"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/rollback"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/runtime"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/scheduler"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/secrets"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/strategy"
+	deployworker "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/worker"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/bootstrap"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	pevents "github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/lifecycle"
 	"github.com/go-chi/chi/v5"
 	"go.uber.org/zap"
 )
@@ -91,8 +91,8 @@ func Init(ctx context.Context, app *bootstrap.App) (*Module, error) {
 	workerID := fmt.Sprintf("deployer-%s", app.Config.App.Name)
 	pipeline := executor.NewPipeline(executor.Deps{
 		Config: app.Config.Deployer, Deployments: deploymentRepo,
-		Projects: project.NewRepository(app.DB),
-		Artifacts: buildstore.NewArtifactRepository(app.DB),
+		Projects:   project.NewRepository(app.DB),
+		Artifacts:  buildstore.NewArtifactRepository(app.DB),
 		Executions: execRepo, Containers: containerRepo, HealthRepo: healthRepo,
 		Events: publisher, CPEvents: cpPublisher, Secrets: secretLoader,
 		Puller: puller, Scheduler: sched, Runtime: rt, Health: healthChecker,
@@ -138,4 +138,3 @@ func Init(ctx context.Context, app *bootstrap.App) (*Module, error) {
 		Metrics: deployMetrics, Pipeline: pipeline, Cancels: cancels, Queue: queue,
 	}, nil
 }
-

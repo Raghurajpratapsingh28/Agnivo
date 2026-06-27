@@ -3,7 +3,7 @@ package dns_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/dns"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/dns"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

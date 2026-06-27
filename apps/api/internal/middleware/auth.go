@@ -3,7 +3,7 @@ package middleware
 import (
 	"net/http"
 
-	idhttp "github.com/agnivo/agnivo/packages/application/identity/http"
+	idhttp "github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/http"
 )
 
 // JWTAuth validates dashboard session tokens via the identity platform middleware.

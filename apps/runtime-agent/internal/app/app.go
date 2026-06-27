@@ -4,8 +4,8 @@ package app
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/application/runtimeagent"
-	"github.com/agnivo/agnivo/packages/platform/bootstrap"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/runtimeagent"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/bootstrap"
 )
 
 // Register attaches the runtime agent service to the application.

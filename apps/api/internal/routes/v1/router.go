@@ -2,8 +2,8 @@
 package v1
 
 import (
-	"github.com/agnivo/agnivo/packages/application/controlplane"
-	"github.com/agnivo/agnivo/packages/application/identity"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity"
 	"github.com/go-chi/chi/v5"
 	"go.uber.org/zap"
 )

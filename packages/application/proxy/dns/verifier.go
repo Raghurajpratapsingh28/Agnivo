@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/model"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 	"go.uber.org/zap"
 )
 
@@ -166,9 +166,9 @@ func (v *Verifier) verifyAAAA(ctx context.Context, dv model.DomainVerification) 
 // propagated globally.  Returns true only when all probed resolvers agree.
 func (v *Verifier) CheckPropagation(ctx context.Context, hostname, txtValue string) bool {
 	resolvers := []string{
-		"8.8.8.8:53",   // Google
-		"1.1.1.1:53",   // Cloudflare
-		"9.9.9.9:53",   // Quad9
+		"8.8.8.8:53",        // Google
+		"1.1.1.1:53",        // Cloudflare
+		"9.9.9.9:53",        // Quad9
 		"208.67.222.222:53", // OpenDNS
 	}
 	verified := 0

@@ -6,8 +6,8 @@ import (
 	"crypto/sha256"
 	"encoding/hex"
 
-	"github.com/agnivo/agnivo/packages/platform/hashx"
-	"github.com/agnivo/agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/hashx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
 )
 
 // Generate returns a URL-safe random token and its SHA-256 hex hash. Only the

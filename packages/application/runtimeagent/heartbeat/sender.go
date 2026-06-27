@@ -10,11 +10,11 @@ import (
 	"runtime"
 	"time"
 
-	schedmodel "github.com/agnivo/agnivo/packages/application/scheduler/model"
-	rtevents "github.com/agnivo/agnivo/packages/application/runtimeagent/events"
-	"github.com/agnivo/agnivo/packages/application/runtimeagent/docker"
-	"github.com/agnivo/agnivo/packages/application/runtimeagent/store"
-	"github.com/agnivo/agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/runtimeagent/docker"
+	rtevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/runtimeagent/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/runtimeagent/store"
+	schedmodel "github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
 )
 
 // Sender registers and heartbeats with the scheduler.
@@ -36,7 +36,7 @@ func NewSender(cfg config.RuntimeAgent, docker *docker.Client, store *store.Repo
 	return &Sender{
 		cfg: cfg, nodeID: nodeID,
 		httpClient: &http.Client{Timeout: 10 * time.Second},
-		docker: docker, store: store, events: events,
+		docker:     docker, store: store, events: events,
 	}
 }
 
@@ -68,8 +68,8 @@ func (s *Sender) Send(ctx context.Context) error {
 		CPUCores: s.cfg.CPUCores, MemoryMB: s.cfg.MemoryMB, DiskGB: s.cfg.DiskGB,
 		GPUCount: s.cfg.GPUCount, MaxContainers: s.cfg.MaxContainers, ContainerCount: count,
 		HealthStatus: schedmodel.HealthHealthy,
-		Labels: map[string]string{"agnivo.runtime_version": s.cfg.Version},
-		LoadSummary: map[string]any{"containers": count},
+		Labels:       map[string]string{"agnivo.runtime_version": s.cfg.Version},
+		LoadSummary:  map[string]any{"containers": count},
 		ResourceSummary: map[string]any{
 			"cpu_cores": s.cfg.CPUCores, "memory_mb": s.cfg.MemoryMB, "disk_gb": s.cfg.DiskGB,
 		},

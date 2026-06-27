@@ -9,11 +9,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/ops/model"
-	"github.com/agnivo/agnivo/packages/application/ops/store"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/idx"
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 	"go.uber.org/zap"
 )
 

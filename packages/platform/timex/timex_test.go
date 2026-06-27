@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/timex"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/timex"
 	"github.com/stretchr/testify/assert"
 )
 

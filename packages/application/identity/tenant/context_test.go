@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/identity/tenant"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/tenant"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

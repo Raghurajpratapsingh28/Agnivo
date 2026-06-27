@@ -9,10 +9,10 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/ops/model"
-	"github.com/agnivo/agnivo/packages/application/ops/store"
-	redisclient "github.com/agnivo/agnivo/packages/platform/cache/redis"
-	"github.com/agnivo/agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/store"
+	redisclient "github.com/Raghurajpratapsingh28/Agnivo/packages/platform/cache/redis"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
 	"go.uber.org/zap"
 )
 
@@ -125,13 +125,13 @@ func (s *Scheduler) Register(ctx context.Context, name, schedule, timezone, queu
 	raw, _ := json.Marshal(payload)
 	next := nextRunAfter(schedule, timezone, time.Now().UTC())
 	j := model.CronJob{
-		Name:     name,
-		Schedule: schedule,
-		Timezone: timezone,
-		JobQueue: queue,
-		JobType:  jobType,
-		Payload:  raw,
-		Status:   model.CronActive,
+		Name:      name,
+		Schedule:  schedule,
+		Timezone:  timezone,
+		JobQueue:  queue,
+		JobType:   jobType,
+		Payload:   raw,
+		Status:    model.CronActive,
 		NextRunAt: &next,
 	}
 	_, err := s.repo.UpsertCronJob(ctx, j)

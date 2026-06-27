@@ -3,7 +3,7 @@ package postgres
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 	"github.com/jackc/pgx/v5"
 	"go.uber.org/zap"
 )

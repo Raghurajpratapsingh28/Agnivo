@@ -5,9 +5,9 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
-	"github.com/agnivo/agnivo/packages/platform/idx"
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 )
 
 // Entry is an immutable audit log record.
@@ -28,22 +28,22 @@ type Entry struct {
 
 // Well-known audit actions.
 const (
-	ActionLogin           = "auth.login"
-	ActionLogout          = "auth.logout"
-	ActionRegister        = "auth.register"
-	ActionPasswordReset   = "auth.password_reset"
-	ActionPasswordChange  = "auth.password_change"
-	ActionOrgCreate       = "org.create"
-	ActionOrgUpdate       = "org.update"
-	ActionOrgDelete       = "org.delete"
-	ActionMemberInvite    = "member.invite"
-	ActionMemberRemove    = "member.remove"
+	ActionLogin            = "auth.login"
+	ActionLogout           = "auth.logout"
+	ActionRegister         = "auth.register"
+	ActionPasswordReset    = "auth.password_reset"
+	ActionPasswordChange   = "auth.password_change"
+	ActionOrgCreate        = "org.create"
+	ActionOrgUpdate        = "org.update"
+	ActionOrgDelete        = "org.delete"
+	ActionMemberInvite     = "member.invite"
+	ActionMemberRemove     = "member.remove"
 	ActionMemberRoleChange = "member.role_change"
-	ActionAPIKeyCreate    = "apikey.create"
-	ActionAPIKeyRotate    = "apikey.rotate"
-	ActionAPIKeyDelete    = "apikey.delete"
-	ActionSessionRevoke   = "session.revoke"
-	ActionTokenRevoke     = "token.revoke"
+	ActionAPIKeyCreate     = "apikey.create"
+	ActionAPIKeyRotate     = "apikey.rotate"
+	ActionAPIKeyDelete     = "apikey.delete"
+	ActionSessionRevoke    = "session.revoke"
+	ActionTokenRevoke      = "token.revoke"
 )
 
 // Logger records audit entries.

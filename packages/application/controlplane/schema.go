@@ -4,8 +4,8 @@
 package controlplane
 
 import (
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
-	"github.com/agnivo/agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
 )
 
 const SchemaDDL = `

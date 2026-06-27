@@ -8,38 +8,38 @@ import (
 	"encoding/pem"
 	"fmt"
 
-	"github.com/agnivo/agnivo/packages/application/identity/apikey"
-	"github.com/agnivo/agnivo/packages/application/identity/audit"
-	"github.com/agnivo/agnivo/packages/application/identity/auth"
-	idhttp "github.com/agnivo/agnivo/packages/application/identity/http"
-	"github.com/agnivo/agnivo/packages/application/identity/jwt"
-	"github.com/agnivo/agnivo/packages/application/identity/member"
-	"github.com/agnivo/agnivo/packages/application/identity/organization"
-	"github.com/agnivo/agnivo/packages/application/identity/password"
-	"github.com/agnivo/agnivo/packages/application/identity/pat"
-	"github.com/agnivo/agnivo/packages/application/identity/session"
-	"github.com/agnivo/agnivo/packages/application/identity/user"
-	"github.com/agnivo/agnivo/packages/platform/bootstrap"
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/apikey"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/audit"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/auth"
+	idhttp "github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/http"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/jwt"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/member"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/organization"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/password"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/pat"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/session"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/user"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/bootstrap"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 	"github.com/go-chi/chi/v5"
 	"go.uber.org/zap"
 )
 
 // Module is the Identity & Access Platform composition root.
 type Module struct {
-	Auth         *auth.Service
-	Users        *user.Service
-	Orgs         *organization.Service
-	Members      *member.Service
-	APIKeys      *apikey.Service
-	Sessions     *session.Service
-	PATs         *pat.Repository
-	JWT          *jwt.Manager
-	Revocation   *session.RevocationStore
-	MemberRepo   *member.Repository
-	HTTP         *idhttp.Handlers
-	Middleware   *idhttp.Middleware
+	Auth       *auth.Service
+	Users      *user.Service
+	Orgs       *organization.Service
+	Members    *member.Service
+	APIKeys    *apikey.Service
+	Sessions   *session.Service
+	PATs       *pat.Repository
+	JWT        *jwt.Manager
+	Revocation *session.RevocationStore
+	MemberRepo *member.Repository
+	HTTP       *idhttp.Handlers
+	Middleware *idhttp.Middleware
 }
 
 // Init wires the identity module onto the bootstrap App.

@@ -10,11 +10,11 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/model"
-	"github.com/agnivo/agnivo/packages/application/proxy/store"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/idx"
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 	"go.uber.org/zap"
 )
 
@@ -26,9 +26,9 @@ type CaddyTLS interface {
 
 // Manager orchestrates TLS certificate provisioning and renewal.
 type Manager struct {
-	repo   *store.Repository
-	caddy  CaddyTLS
-	log    *zap.Logger
+	repo  *store.Repository
+	caddy CaddyTLS
+	log   *zap.Logger
 
 	// renewBefore is how far ahead of expiry to trigger renewal.
 	renewBefore time.Duration

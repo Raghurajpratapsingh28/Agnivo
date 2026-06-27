@@ -11,7 +11,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/cache/redis"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/cache/redis"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 )
@@ -143,7 +143,7 @@ func RateLimit(redisClient *redis.Client, limit int, _ time.Duration, log *zap.L
 // ─────────────────────────────── In-memory rate limiter (fallback) ───────────
 
 type inMemoryBucket struct {
-	count  int
+	count   int
 	resetAt time.Time
 }
 

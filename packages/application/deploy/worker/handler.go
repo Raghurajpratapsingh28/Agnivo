@@ -4,12 +4,12 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/agnivo/agnivo/packages/application/controlplane/cpjobs"
-	deploycancel "github.com/agnivo/agnivo/packages/application/deploy/cancel"
-	"github.com/agnivo/agnivo/packages/application/deploy/executor"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/jobs"
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/cpjobs"
+	deploycancel "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/cancel"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/executor"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 	"go.uber.org/zap"
 )
 

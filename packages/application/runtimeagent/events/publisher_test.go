@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	rtevents "github.com/agnivo/agnivo/packages/application/runtimeagent/events"
-	"github.com/agnivo/agnivo/packages/platform/events"
+	rtevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/runtimeagent/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
 	"github.com/stretchr/testify/assert"
 )
 

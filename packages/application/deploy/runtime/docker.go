@@ -8,9 +8,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/deploy/model"
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 )
 
 // ContainerInfo describes a running container.

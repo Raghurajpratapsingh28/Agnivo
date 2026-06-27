@@ -4,28 +4,28 @@ import (
 	"context"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/identity/tokencrypto"
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/tokencrypto"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
 	"github.com/jackc/pgx/v5"
 )
 
 // APIKey is an organization-scoped API key.
 type APIKey struct {
-	ID          string     `db:"id" json:"id"`
-	OrgID       string     `db:"org_id" json:"org_id"`
-	Name        string     `db:"name" json:"name"`
-	Prefix      string     `db:"prefix" json:"prefix"`
-	KeyHash     string     `db:"-" json:"-"`
-	Scopes      []string   `db:"scopes" json:"scopes"`
-	ExpiresAt   *time.Time `db:"expires_at" json:"expires_at,omitempty"`
-	DisabledAt  *time.Time `db:"disabled_at" json:"disabled_at,omitempty"`
-	LastUsedAt  *time.Time `db:"last_used_at" json:"last_used_at,omitempty"`
-	LastUsedIP  string     `db:"last_used_ip" json:"last_used_ip,omitempty"`
-	CreatedBy   string     `db:"created_by" json:"created_by"`
-	CreatedAt   time.Time  `db:"created_at" json:"created_at"`
-	UpdatedAt   time.Time  `db:"updated_at" json:"updated_at"`
+	ID         string     `db:"id" json:"id"`
+	OrgID      string     `db:"org_id" json:"org_id"`
+	Name       string     `db:"name" json:"name"`
+	Prefix     string     `db:"prefix" json:"prefix"`
+	KeyHash    string     `db:"-" json:"-"`
+	Scopes     []string   `db:"scopes" json:"scopes"`
+	ExpiresAt  *time.Time `db:"expires_at" json:"expires_at,omitempty"`
+	DisabledAt *time.Time `db:"disabled_at" json:"disabled_at,omitempty"`
+	LastUsedAt *time.Time `db:"last_used_at" json:"last_used_at,omitempty"`
+	LastUsedIP string     `db:"last_used_ip" json:"last_used_ip,omitempty"`
+	CreatedBy  string     `db:"created_by" json:"created_by"`
+	CreatedAt  time.Time  `db:"created_at" json:"created_at"`
+	UpdatedAt  time.Time  `db:"updated_at" json:"updated_at"`
 }
 
 // CreateResult holds the one-time secret shown to the caller.

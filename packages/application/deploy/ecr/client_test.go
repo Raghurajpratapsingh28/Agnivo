@@ -3,8 +3,8 @@ package ecr_test
 import (
 	"testing"
 
-	deployecr "github.com/agnivo/agnivo/packages/application/deploy/ecr"
-	"github.com/agnivo/agnivo/packages/platform/config"
+	deployecr "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/ecr"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
 	"github.com/stretchr/testify/assert"
 )
 

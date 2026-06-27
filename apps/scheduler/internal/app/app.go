@@ -4,8 +4,8 @@ package app
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/application/scheduler"
-	"github.com/agnivo/agnivo/packages/platform/bootstrap"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/bootstrap"
 )
 
 // Register attaches the scheduler service to the application.

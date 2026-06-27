@@ -10,16 +10,16 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/agnivo/agnivo/packages/application/controlplane/cpevents"
-	"github.com/agnivo/agnivo/packages/application/controlplane/deployment"
-	"github.com/agnivo/agnivo/packages/application/controlplane/gitrepo"
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/hashx"
-	"github.com/agnivo/agnivo/packages/platform/httpx"
-	"github.com/agnivo/agnivo/packages/platform/idx"
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/cpevents"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/deployment"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/gitrepo"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/hashx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/httpx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 )
 
 // Service processes inbound git webhooks.
@@ -157,7 +157,7 @@ func (s *Service) handleBitbucket(ctx context.Context, r *http.Request, body []b
 		Push struct {
 			Changes []struct {
 				New struct {
-					Name string `json:"name"`
+					Name   string `json:"name"`
 					Target struct {
 						Hash    string `json:"hash"`
 						Message string `json:"message"`

@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/platform/slicesx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/slicesx"
 	"github.com/stretchr/testify/assert"
 )
 

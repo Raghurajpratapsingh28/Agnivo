@@ -5,29 +5,29 @@ package http
 import (
 	"net/http"
 
-	proxyevents "github.com/agnivo/agnivo/packages/application/proxy/events"
-	proxmetrics "github.com/agnivo/agnivo/packages/application/proxy/metrics"
-	"github.com/agnivo/agnivo/packages/application/proxy/model"
-	"github.com/agnivo/agnivo/packages/application/proxy/preview"
-	"github.com/agnivo/agnivo/packages/application/proxy/recovery"
-	"github.com/agnivo/agnivo/packages/application/proxy/route"
-	"github.com/agnivo/agnivo/packages/application/proxy/store"
-	"github.com/agnivo/agnivo/packages/application/proxy/streaming"
-	"github.com/agnivo/agnivo/packages/application/proxy/traffic"
-	"github.com/agnivo/agnivo/packages/platform/dto"
+	proxyevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/events"
+	proxmetrics "github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/metrics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/preview"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/recovery"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/route"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/streaming"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/traffic"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/dto"
 	"github.com/go-chi/chi/v5"
 )
 
 // Handlers is the proxy-manager internal HTTP surface.
 type Handlers struct {
-	repo        *store.Repository
-	engine      *route.Engine
-	switcher    *traffic.Switcher
-	prevMgr     *preview.Manager
-	reconciler  *recovery.Reconciler
-	hub         *streaming.Hub
-	metrics     *proxmetrics.Metrics
-	pub         *proxyevents.Publisher
+	repo       *store.Repository
+	engine     *route.Engine
+	switcher   *traffic.Switcher
+	prevMgr    *preview.Manager
+	reconciler *recovery.Reconciler
+	hub        *streaming.Hub
+	metrics    *proxmetrics.Metrics
+	pub        *proxyevents.Publisher
 }
 
 // NewHandlers constructs internal HTTP handlers.

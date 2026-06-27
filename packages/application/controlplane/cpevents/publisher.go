@@ -3,26 +3,26 @@ package cpevents
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/platform/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
 )
 
 // Event names for the control plane.
 const (
-	ProjectCreated        = "project.created"
-	ProjectUpdated        = "project.updated"
-	ProjectDeleted        = "project.deleted"
-	ProjectArchived       = "project.archived"
-	RepositoryConnected   = "repository.connected"
+	ProjectCreated         = "project.created"
+	ProjectUpdated         = "project.updated"
+	ProjectDeleted         = "project.deleted"
+	ProjectArchived        = "project.archived"
+	RepositoryConnected    = "repository.connected"
 	RepositoryDisconnected = "repository.disconnected"
-	DeploymentRequested   = "deployment.requested"
-	DeploymentCancelled   = "deployment.cancelled"
-	DeploymentSucceeded   = "deployment.succeeded"
-	DeploymentFailed      = "deployment.failed"
-	SecretUpdated         = "secret.updated"
-	EnvironmentUpdated    = "environment.updated"
-	DomainAdded           = "domain.added"
-	DomainRemoved         = "domain.removed"
-	WebhookReceived       = "webhook.received"
+	DeploymentRequested    = "deployment.requested"
+	DeploymentCancelled    = "deployment.cancelled"
+	DeploymentSucceeded    = "deployment.succeeded"
+	DeploymentFailed       = "deployment.failed"
+	SecretUpdated          = "secret.updated"
+	EnvironmentUpdated     = "environment.updated"
+	DomainAdded            = "domain.added"
+	DomainRemoved          = "domain.removed"
+	WebhookReceived        = "webhook.received"
 )
 
 // Publisher wraps the event bus with control-plane conventions.
@@ -50,8 +50,8 @@ type Meta struct {
 
 // Payload wraps domain data with metadata.
 type Payload struct {
-	Meta Meta        `json:"meta"`
-	Data any         `json:"data,omitempty"`
+	Meta Meta `json:"meta"`
+	Data any  `json:"data,omitempty"`
 }
 
 // PublishAsync emits an event asynchronously.

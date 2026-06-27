@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/deploy/deploystore"
-	deploymodel "github.com/agnivo/agnivo/packages/application/deploy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/deploystore"
+	deploymodel "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/model"
 )
 
 // Monitor detects stale in-progress deployments for recovery.

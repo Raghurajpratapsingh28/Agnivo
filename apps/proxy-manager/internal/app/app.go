@@ -5,8 +5,8 @@ package app
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/application/proxy"
-	"github.com/agnivo/agnivo/packages/platform/bootstrap"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/bootstrap"
 )
 
 // Register attaches the edge networking module to the application.

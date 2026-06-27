@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"testing"
 
-	deploycancel "github.com/agnivo/agnivo/packages/application/deploy/cancel"
-	"github.com/agnivo/agnivo/packages/application/deploy/worker"
-	"github.com/agnivo/agnivo/packages/application/controlplane/cpjobs"
-	"github.com/agnivo/agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/cpjobs"
+	deploycancel "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/cancel"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/worker"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
 	"github.com/stretchr/testify/assert"
 )
 

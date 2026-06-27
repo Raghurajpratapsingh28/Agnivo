@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 )
 
 // State is the circuit breaker lifecycle state.
@@ -23,10 +23,10 @@ const (
 type CircuitBreaker struct {
 	mu sync.Mutex
 
-	name          string
-	maxFailures   int
-	openDuration  time.Duration
-	halfOpenMax   int
+	name         string
+	maxFailures  int
+	openDuration time.Duration
+	halfOpenMax  int
 
 	state         State
 	failures      int

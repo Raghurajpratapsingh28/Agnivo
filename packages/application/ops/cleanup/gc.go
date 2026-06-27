@@ -6,7 +6,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
 	"go.uber.org/zap"
 )
 

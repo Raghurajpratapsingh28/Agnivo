@@ -5,7 +5,7 @@ import (
 	"compress/gzip"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/platform/compress"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/compress"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

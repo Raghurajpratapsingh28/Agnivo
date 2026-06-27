@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/ops/metering"
-	"github.com/agnivo/agnivo/packages/application/ops/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/metering"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/model"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"

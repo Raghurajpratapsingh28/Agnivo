@@ -7,11 +7,11 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/model"
-	"github.com/agnivo/agnivo/packages/application/proxy/store"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/idx"
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 	"go.uber.org/zap"
 )
 
@@ -80,24 +80,24 @@ func (e *Engine) Create(ctx context.Context, in CreateInput) (model.Route, error
 	addHeadersRaw, _ := json.Marshal(in.AddHeaders)
 
 	rt, err := e.repo.UpsertRoute(ctx, model.Route{
-		ID:            idx.NewUUID(),
-		OrgID:         in.OrgID,
-		ProjectID:     in.ProjectID,
-		DeploymentID:  in.DeploymentID,
-		DomainID:      in.DomainID,
-		Hostname:      in.Hostname,
-		Upstream:      in.Upstream,
-		Kind:          kind,
-		Status:        model.RouteStatusPending,
-		TrafficMode:   model.TrafficModeActive,
-		TLSEnabled:    in.TLSEnabled,
-		HTTPSRedirect: in.HTTPSRedirect,
-		StripPrefix:   in.StripPrefix,
-		AddHeaders:    addHeadersRaw,
+		ID:             idx.NewUUID(),
+		OrgID:          in.OrgID,
+		ProjectID:      in.ProjectID,
+		DeploymentID:   in.DeploymentID,
+		DomainID:       in.DomainID,
+		Hostname:       in.Hostname,
+		Upstream:       in.Upstream,
+		Kind:           kind,
+		Status:         model.RouteStatusPending,
+		TrafficMode:    model.TrafficModeActive,
+		TLSEnabled:     in.TLSEnabled,
+		HTTPSRedirect:  in.HTTPSRedirect,
+		StripPrefix:    in.StripPrefix,
+		AddHeaders:     addHeadersRaw,
 		TimeoutSeconds: timeout,
-		MaxRetries:    retries,
-		Version:       1,
-		CorrelationID: corrID,
+		MaxRetries:     retries,
+		Version:        1,
+		CorrelationID:  corrID,
 	})
 	if err != nil {
 		return model.Route{}, err

@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/deploy/cancel"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/cancel"
 	"github.com/stretchr/testify/assert"
 )
 

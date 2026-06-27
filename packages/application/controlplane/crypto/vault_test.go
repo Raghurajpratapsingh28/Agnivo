@@ -3,8 +3,8 @@ package crypto_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/controlplane/crypto"
-	"github.com/agnivo/agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/crypto"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

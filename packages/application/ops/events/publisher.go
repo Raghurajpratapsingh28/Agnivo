@@ -4,9 +4,9 @@ package events
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/platform/events"
-	"github.com/agnivo/agnivo/packages/platform/idx"
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 )
 
 // Platform operations event type names.

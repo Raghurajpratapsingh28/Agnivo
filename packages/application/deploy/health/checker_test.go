@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/deploy/health"
-	"github.com/agnivo/agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/health"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

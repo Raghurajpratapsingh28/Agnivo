@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/resilience"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/resilience"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

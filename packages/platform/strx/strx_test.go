@@ -3,7 +3,7 @@ package strx_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/platform/strx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/strx"
 	"github.com/stretchr/testify/assert"
 )
 

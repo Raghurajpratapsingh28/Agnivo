@@ -3,8 +3,8 @@ package strategy_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/deploy/model"
-	"github.com/agnivo/agnivo/packages/application/deploy/strategy"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/strategy"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -1,7 +1,7 @@
 // Package rbac implements enterprise role-based access control for organizations.
 package rbac
 
-import "github.com/agnivo/agnivo/packages/platform/errors"
+import "github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 
 // Role is an organization membership role.
 type Role string

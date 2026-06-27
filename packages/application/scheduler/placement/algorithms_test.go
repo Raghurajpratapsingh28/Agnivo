@@ -3,8 +3,8 @@ package placement_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/scheduler/model"
-	"github.com/agnivo/agnivo/packages/application/scheduler/placement"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/placement"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

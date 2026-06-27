@@ -6,13 +6,13 @@ package bootstrap
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/packages/platform/cache/redis"
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
-	"github.com/agnivo/agnivo/packages/platform/health"
-	"github.com/agnivo/agnivo/packages/platform/logger"
-	"github.com/agnivo/agnivo/packages/platform/observability/metrics"
-	"github.com/agnivo/agnivo/packages/platform/observability/tracing"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/cache/redis"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/health"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/observability/metrics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/observability/tracing"
 	"github.com/google/wire"
 	"go.uber.org/zap"
 )

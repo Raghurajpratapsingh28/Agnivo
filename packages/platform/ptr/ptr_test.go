@@ -3,7 +3,7 @@ package ptr_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/platform/ptr"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/ptr"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -4,8 +4,8 @@ import (
 	"context"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/model"
-	"github.com/agnivo/agnivo/packages/application/proxy/route"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/route"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 	"go.uber.org/zap"
@@ -34,7 +34,7 @@ func (f *fakeCaddy) DeleteRoute(_ context.Context, hostname string) error {
 
 // fakeRepo is a minimal in-memory route repository for unit tests.
 type fakeRepo struct {
-	routes  map[string]model.Route
+	routes   map[string]model.Route
 	versions []model.RouteVersion
 }
 

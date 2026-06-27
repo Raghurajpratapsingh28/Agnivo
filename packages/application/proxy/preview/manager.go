@@ -9,10 +9,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/model"
-	"github.com/agnivo/agnivo/packages/application/proxy/store"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
 	"go.uber.org/zap"
 )
 
@@ -51,15 +51,15 @@ func NewManager(repo *store.Repository, caddy CaddyPreview, previewDomain string
 
 // CreateInput is the payload for creating a preview environment.
 type CreateInput struct {
-	OrgID         string
-	ProjectID     string
-	DeploymentID  string
-	Upstream      string
-	Branch        string
-	CommitSHA     string
+	OrgID          string
+	ProjectID      string
+	DeploymentID   string
+	Upstream       string
+	Branch         string
+	CommitSHA      string
 	CustomHostname string // optional: override the auto-generated hostname
-	TTL           time.Duration
-	CorrelationID string
+	TTL            time.Duration
+	CorrelationID  string
 }
 
 // Create registers a preview deployment with a unique auto-generated hostname.

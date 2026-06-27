@@ -4,8 +4,8 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/agnivo/agnivo/packages/application/identity/audit"
-	"github.com/agnivo/agnivo/packages/application/identity/tenant"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/audit"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/tenant"
 )
 
 // Service handles user profile business logic.

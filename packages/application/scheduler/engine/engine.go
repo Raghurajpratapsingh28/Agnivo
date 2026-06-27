@@ -4,22 +4,22 @@ import (
 	"context"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/scheduler/model"
-	"github.com/agnivo/agnivo/packages/application/scheduler/placement"
-	schedevents "github.com/agnivo/agnivo/packages/application/scheduler/events"
-	schedmetrics "github.com/agnivo/agnivo/packages/application/scheduler/metrics"
-	"github.com/agnivo/agnivo/packages/application/scheduler/store"
-	"github.com/agnivo/agnivo/packages/platform/config"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	schedevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/events"
+	schedmetrics "github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/metrics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/placement"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 )
 
 // Engine orchestrates placement and reservations.
 type Engine struct {
-	cfg       config.Scheduler
-	store     *store.Repository
-	placers   *placement.Registry
-	events    *schedevents.Publisher
-	metrics   *schedmetrics.Metrics
+	cfg     config.Scheduler
+	store   *store.Repository
+	placers *placement.Registry
+	events  *schedevents.Publisher
+	metrics *schedmetrics.Metrics
 }
 
 // NewEngine constructs a scheduling engine.
@@ -27,7 +27,7 @@ func NewEngine(cfg config.Scheduler, store *store.Repository, events *schedevent
 	return &Engine{
 		cfg: cfg, store: store,
 		placers: placement.NewRegistry(cfg.DefaultAlgorithm),
-		events: events, metrics: metrics,
+		events:  events, metrics: metrics,
 	}
 }
 

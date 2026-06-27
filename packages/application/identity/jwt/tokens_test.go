@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/identity/jwt"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/jwt"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

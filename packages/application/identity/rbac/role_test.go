@@ -3,7 +3,7 @@ package rbac_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/identity/rbac"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/rbac"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

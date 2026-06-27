@@ -3,7 +3,7 @@ package preview_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/preview"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/preview"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -6,9 +6,9 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/agnivo/agnivo/packages/application/ops/model"
-	"github.com/agnivo/agnivo/packages/application/ops/store"
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 	"go.uber.org/zap"
 )
 
@@ -21,8 +21,8 @@ const (
 
 // Logger persists audit events and optionally emits structured log lines.
 type Logger struct {
-	repo  *store.Repository
-	log   *zap.Logger
+	repo   *store.Repository
+	log    *zap.Logger
 	source string
 }
 

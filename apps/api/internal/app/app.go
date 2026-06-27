@@ -6,12 +6,12 @@ package app
 import (
 	"context"
 
-	"github.com/agnivo/agnivo/apps/api/internal/routes"
-	"github.com/agnivo/agnivo/apps/api/internal/streaming"
-	"github.com/agnivo/agnivo/packages/application/controlplane"
-	"github.com/agnivo/agnivo/packages/application/identity"
-	"github.com/agnivo/agnivo/packages/platform/bootstrap"
-	"github.com/agnivo/agnivo/packages/platform/lifecycle"
+	"github.com/Raghurajpratapsingh28/Agnivo/apps/api/internal/routes"
+	"github.com/Raghurajpratapsingh28/Agnivo/apps/api/internal/streaming"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/bootstrap"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/lifecycle"
 )
 
 // Register attaches the api routes and the streaming hub to the application.

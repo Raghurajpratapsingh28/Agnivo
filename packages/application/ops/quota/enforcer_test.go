@@ -4,7 +4,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/ops/quota"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/quota"
 	"github.com/stretchr/testify/assert"
 )
 

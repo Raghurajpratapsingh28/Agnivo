@@ -4,8 +4,8 @@ package webhooks
 import (
 	"net/http"
 
-	"github.com/agnivo/agnivo/packages/application/controlplane"
-	"github.com/agnivo/agnivo/packages/platform/dto"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/dto"
 	"github.com/go-chi/chi/v5"
 	"go.uber.org/zap"
 )

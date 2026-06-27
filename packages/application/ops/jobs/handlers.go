@@ -5,17 +5,17 @@ import (
 	"context"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/ops/analytics"
-	"github.com/agnivo/agnivo/packages/application/ops/autosleep"
-	"github.com/agnivo/agnivo/packages/application/ops/backup"
-	"github.com/agnivo/agnivo/packages/application/ops/billing"
-	"github.com/agnivo/agnivo/packages/application/ops/cleanup"
-	opsevents "github.com/agnivo/agnivo/packages/application/ops/events"
-	opsmetrics "github.com/agnivo/agnivo/packages/application/ops/metrics"
-	"github.com/agnivo/agnivo/packages/application/ops/metering"
-	"github.com/agnivo/agnivo/packages/application/ops/model"
-	"github.com/agnivo/agnivo/packages/application/ops/notification"
-	"github.com/agnivo/agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/analytics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/autosleep"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/backup"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/billing"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/cleanup"
+	opsevents "github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/metering"
+	opsmetrics "github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/metrics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/ops/notification"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
 	"go.uber.org/zap"
 )
 
@@ -42,16 +42,16 @@ const (
 
 // Handlers holds all job handler dependencies.
 type Handlers struct {
-	billing    *billing.Engine
-	metering   *metering.Collector
-	notifier   *notification.Dispatcher
-	backupMgr  *backup.Manager
-	gc         *cleanup.GC
-	analytics  *analytics.Aggregator
-	sleepMgr   *autosleep.Manager
-	pub        *opsevents.Publisher
-	metrics    *opsmetrics.Metrics
-	log        *zap.Logger
+	billing   *billing.Engine
+	metering  *metering.Collector
+	notifier  *notification.Dispatcher
+	backupMgr *backup.Manager
+	gc        *cleanup.GC
+	analytics *analytics.Aggregator
+	sleepMgr  *autosleep.Manager
+	pub       *opsevents.Publisher
+	metrics   *opsmetrics.Metrics
+	log       *zap.Logger
 }
 
 // NewHandlers constructs job Handlers.

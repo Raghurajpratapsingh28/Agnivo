@@ -4,22 +4,22 @@ import (
 	"context"
 	"encoding/json"
 
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
-	"github.com/agnivo/agnivo/packages/platform/events"
-	"github.com/agnivo/agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
 )
 
 const (
-	PlacementRequested   = "scheduler.placement_requested"
-	PlacementSucceeded   = "scheduler.placement_succeeded"
-	PlacementFailed      = "scheduler.placement_failed"
-	ReservationCreated   = "scheduler.reservation_created"
-	ReservationReleased  = "scheduler.reservation_released"
-	CapacityUpdated      = "scheduler.capacity_updated"
-	ServerRegistered     = "scheduler.server_registered"
-	ServerOffline        = "scheduler.server_offline"
-	ServerRecovered      = "scheduler.server_recovered"
-	HeartbeatReceived    = "scheduler.heartbeat_received"
+	PlacementRequested  = "scheduler.placement_requested"
+	PlacementSucceeded  = "scheduler.placement_succeeded"
+	PlacementFailed     = "scheduler.placement_failed"
+	ReservationCreated  = "scheduler.reservation_created"
+	ReservationReleased = "scheduler.reservation_released"
+	CapacityUpdated     = "scheduler.capacity_updated"
+	ServerRegistered    = "scheduler.server_registered"
+	ServerOffline       = "scheduler.server_offline"
+	ServerRecovered     = "scheduler.server_recovered"
+	HeartbeatReceived   = "scheduler.heartbeat_received"
 )
 
 // Meta is common scheduler event metadata.

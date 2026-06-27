@@ -1,6 +1,6 @@
 # Agnivo Backend
 
-Modular monolith: **one Go module** (`github.com/agnivo/agnivo`) compiled into
+Modular monolith: **one Go module** (`github.com/Raghurajpratapsingh28/Agnivo`) compiled into
 **eight executables**. All business-agnostic infrastructure lives in
 `packages/platform` and every binary boots through the same shared bootstrap.
 

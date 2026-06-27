@@ -4,7 +4,7 @@ import (
 	"context"
 	"sync"
 
-	"github.com/agnivo/agnivo/packages/platform/events"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/events"
 )
 
 // FakeBus is an in-memory event bus for tests that records every published

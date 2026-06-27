@@ -4,8 +4,8 @@
 package proxy
 
 import (
-	"github.com/agnivo/agnivo/packages/application/scheduler"
-	"github.com/agnivo/agnivo/packages/platform/database/postgres"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/database/postgres"
 )
 
 const SchemaDDL = `

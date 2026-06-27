@@ -3,7 +3,7 @@ package deployment_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/application/controlplane/deployment"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/deployment"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -7,8 +7,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/platform/dto"
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/dto"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

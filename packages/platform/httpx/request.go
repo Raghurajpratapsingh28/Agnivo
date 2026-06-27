@@ -5,7 +5,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/agnivo/agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
 	"github.com/go-chi/chi/v5"
 )
 

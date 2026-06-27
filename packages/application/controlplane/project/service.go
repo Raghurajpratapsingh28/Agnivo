@@ -5,13 +5,13 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/agnivo/agnivo/packages/application/controlplane/cpevents"
-	"github.com/agnivo/agnivo/packages/application/identity/audit"
-	"github.com/agnivo/agnivo/packages/application/identity/rbac"
-	"github.com/agnivo/agnivo/packages/application/identity/tenant"
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/idx"
-	"github.com/agnivo/agnivo/packages/platform/logger"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/cpevents"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/audit"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/rbac"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/identity/tenant"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/idx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/logger"
 )
 
 // Service handles project business logic.
@@ -32,18 +32,18 @@ func NewService(repo *Repository, auditLog *audit.Logger, events *cpevents.Publi
 
 // CreateInput is the create project request.
 type CreateInput struct {
-	Name           string   `json:"name" validate:"required,min=1,max=100"`
-	Slug           string   `json:"slug" validate:"omitempty,slug"`
-	Description    string   `json:"description" validate:"omitempty,max=2000"`
-	RepoURL        string   `json:"repo_url" validate:"omitempty,git_repo"`
-	RepoProvider   string   `json:"repo_provider" validate:"omitempty,oneof=github gitlab bitbucket generic ''"`
-	Branch         string   `json:"branch" validate:"omitempty,max=255"`
-	DefaultRuntime string   `json:"default_runtime" validate:"omitempty,max=64"`
-	Framework      string   `json:"framework" validate:"omitempty,max=64"`
-	BuildMethod    string   `json:"build_method" validate:"omitempty,oneof=dockerfile buildpack nixpacks"`
-	Region         string   `json:"region" validate:"omitempty,max=64"`
+	Name           string     `json:"name" validate:"required,min=1,max=100"`
+	Slug           string     `json:"slug" validate:"omitempty,slug"`
+	Description    string     `json:"description" validate:"omitempty,max=2000"`
+	RepoURL        string     `json:"repo_url" validate:"omitempty,git_repo"`
+	RepoProvider   string     `json:"repo_provider" validate:"omitempty,oneof=github gitlab bitbucket generic ''"`
+	Branch         string     `json:"branch" validate:"omitempty,max=255"`
+	DefaultRuntime string     `json:"default_runtime" validate:"omitempty,max=64"`
+	Framework      string     `json:"framework" validate:"omitempty,max=64"`
+	BuildMethod    string     `json:"build_method" validate:"omitempty,oneof=dockerfile buildpack nixpacks"`
+	Region         string     `json:"region" validate:"omitempty,max=64"`
 	Visibility     Visibility `json:"visibility" validate:"omitempty,oneof=private public"`
-	Tags           []string `json:"tags" validate:"omitempty,dive,max=64"`
+	Tags           []string   `json:"tags" validate:"omitempty,dive,max=64"`
 }
 
 // Create creates a project in the current organization.

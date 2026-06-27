@@ -3,8 +3,8 @@ package middleware
 import (
 	"net/http"
 
-	"github.com/agnivo/agnivo/packages/platform/config"
-	platformmw "github.com/agnivo/agnivo/packages/platform/httpx/middleware"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
+	platformmw "github.com/Raghurajpratapsingh28/Agnivo/packages/platform/httpx/middleware"
 )
 
 // InternalAuth protects /internal/v1 routes with the platform service token.

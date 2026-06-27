@@ -8,15 +8,15 @@ import (
 	"context"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/application/proxy/cert"
-	"github.com/agnivo/agnivo/packages/application/proxy/dns"
-	"github.com/agnivo/agnivo/packages/application/proxy/events"
-	proxmetrics "github.com/agnivo/agnivo/packages/application/proxy/metrics"
-	"github.com/agnivo/agnivo/packages/application/proxy/model"
-	"github.com/agnivo/agnivo/packages/application/proxy/preview"
-	"github.com/agnivo/agnivo/packages/application/proxy/route"
-	"github.com/agnivo/agnivo/packages/application/proxy/store"
-	"github.com/agnivo/agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/cert"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/dns"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/events"
+	proxmetrics "github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/metrics"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/preview"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/route"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/proxy/store"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
 	"go.uber.org/zap"
 )
 
@@ -149,8 +149,8 @@ func (r *Reconciler) reconcileVerifications(ctx context.Context) error {
 				r.log.Warn("reconciler: mark verify failed", zap.String("domain", v.Hostname), zap.Error(err))
 			}
 			_ = r.pub.PublishAsync(ctx, events.DomainVerifyFailed, events.Meta{
-				OrgID:     v.OrgID,
-				DomainID:  v.DomainID,
+				OrgID:    v.OrgID,
+				DomainID: v.DomainID,
 			}, map[string]string{"hostname": v.Hostname, "reason": result.Reason})
 		}
 	}

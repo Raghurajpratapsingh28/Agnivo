@@ -7,7 +7,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/platform/health"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/health"
 	"github.com/stretchr/testify/require"
 )
 

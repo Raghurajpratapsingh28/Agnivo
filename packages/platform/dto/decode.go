@@ -6,8 +6,8 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/agnivo/agnivo/packages/platform/errors"
-	"github.com/agnivo/agnivo/packages/platform/validation"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/errors"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/validation"
 )
 
 // MaxBodyBytes bounds request bodies to prevent memory exhaustion (1 MiB).

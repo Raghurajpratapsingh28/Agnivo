@@ -3,7 +3,7 @@ package config_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/platform/config"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/config"
 	"github.com/stretchr/testify/require"
 )
 

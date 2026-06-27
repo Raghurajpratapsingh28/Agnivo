@@ -5,26 +5,26 @@ import (
 	"math"
 	"sort"
 
-	"github.com/agnivo/agnivo/packages/application/scheduler/model"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/scheduler/model"
 )
 
 // Algorithm names.
 const (
-	FirstFit            = "first_fit"
-	BestFit             = "best_fit"
-	WorstFit            = "worst_fit"
-	FirstFitDecreasing  = "first_fit_decreasing"
-	BestFitDecreasing   = "best_fit_decreasing"
-	LeastLoaded         = "least_loaded"
-	MostLoaded          = "most_loaded"
-	Balanced            = "balanced"
-	Affinity            = "affinity"
-	AntiAffinity        = "anti_affinity"
-	RegionAware         = "region_aware"
-	AZAware             = "az_aware"
-	GPU                 = "gpu"
-	WarmNode            = "warm_node"
-	ColdNode            = "cold_node"
+	FirstFit           = "first_fit"
+	BestFit            = "best_fit"
+	WorstFit           = "worst_fit"
+	FirstFitDecreasing = "first_fit_decreasing"
+	BestFitDecreasing  = "best_fit_decreasing"
+	LeastLoaded        = "least_loaded"
+	MostLoaded         = "most_loaded"
+	Balanced           = "balanced"
+	Affinity           = "affinity"
+	AntiAffinity       = "anti_affinity"
+	RegionAware        = "region_aware"
+	AZAware            = "az_aware"
+	GPU                = "gpu"
+	WarmNode           = "warm_node"
+	ColdNode           = "cold_node"
 )
 
 // Placer selects a server for a workload.
@@ -35,7 +35,7 @@ type Placer interface {
 
 // Registry maps algorithm names to placers.
 type Registry struct {
-	placers map[string]Placer
+	placers       map[string]Placer
 	defaultPlacer Placer
 }
 

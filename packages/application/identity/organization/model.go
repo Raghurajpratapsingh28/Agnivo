@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"time"
 
-	"github.com/agnivo/agnivo/packages/platform/strx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/strx"
 )
 
 // Organization is the tenant aggregate root.

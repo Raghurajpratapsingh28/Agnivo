@@ -3,13 +3,13 @@ package http
 import (
 	"net/http"
 
-	"github.com/agnivo/agnivo/packages/application/controlplane/cpjobs"
-	deploycancel "github.com/agnivo/agnivo/packages/application/deploy/cancel"
-	"github.com/agnivo/agnivo/packages/application/deploy/deploystore"
-	"github.com/agnivo/agnivo/packages/application/deploy/worker"
-	"github.com/agnivo/agnivo/packages/platform/dto"
-	"github.com/agnivo/agnivo/packages/platform/httpx"
-	"github.com/agnivo/agnivo/packages/platform/jobs"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/controlplane/cpjobs"
+	deploycancel "github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/cancel"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/deploystore"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/application/deploy/worker"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/dto"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/httpx"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/jobs"
 	"github.com/go-chi/chi/v5"
 )
 

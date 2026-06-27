@@ -3,7 +3,7 @@ package validation_test
 import (
 	"testing"
 
-	"github.com/agnivo/agnivo/packages/platform/validation"
+	"github.com/Raghurajpratapsingh28/Agnivo/packages/platform/validation"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -28,7 +28,7 @@ func TestStandaloneValidators(t *testing.T) {
 	assert.True(t, validation.IsDockerImage("repo@sha256:"+repeat64()))
 	assert.False(t, validation.IsDockerImage("Bad Image"))
 
-	assert.True(t, validation.IsGitRepo("https://github.com/agnivo/agnivo.git"))
+	assert.True(t, validation.IsGitRepo("https://github.com/Raghurajpratapsingh28/Agnivo.git"))
 	assert.True(t, validation.IsGitRepo("git@github.com:agnivo/agnivo.git"))
 	assert.False(t, validation.IsGitRepo("just-text"))
 
