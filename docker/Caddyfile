@@ -15,7 +15,7 @@ app.invorra.tech {
 		reverse_proxy agnivo-api:8080
 	}
 	handle /health* {
-		reverse_proxy agnivo-api:8080
+		reverse_proxy agnivo-api:9090
 	}
 
 	# Dashboard — run ./scripts/deploy.sh --with-web to enable
