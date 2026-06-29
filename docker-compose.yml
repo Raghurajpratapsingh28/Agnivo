@@ -48,8 +48,11 @@ services:
       POSTGRES_USER: agnivo
       POSTGRES_PASSWORD: agnivo
       POSTGRES_DB: agnivo
-    ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+    # Not published to the host: platform services reach it via the internal
+    # `agnivo` network as `postgres:5432`. Avoids host port conflicts and keeps
+    # the database off the public internet. Uncomment to expose for local tools.
+    # ports:
+    #   - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
@@ -65,8 +68,11 @@ services:
     image: redis:7-alpine
     container_name: agnivo-redis
     restart: unless-stopped
-    ports:
-      - "${REDIS_PORT:-6379}:6379"
+    # Not published to the host: platform services reach it via the internal
+    # `agnivo` network as `redis:6379`. Avoids host port conflicts and keeps
+    # Redis off the public internet. Uncomment to expose for local tools.
+    # ports:
+    #   - "${REDIS_PORT:-6379}:6379"
     volumes:
       - redis-data:/data
     healthcheck:
