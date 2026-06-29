@@ -65,6 +65,9 @@ func (r *Repository) Create(ctx context.Context, p Project) (Project, error) {
 	if p.Branch == "" {
 		p.Branch = "main"
 	}
+	if len(p.Tags) == 0 {
+		p.Tags = []string{}
+	}
 	out, err := r.repo.Insert(ctx, map[string]any{
 		"id": p.ID, "org_id": p.OrgID, "name": p.Name, "slug": p.Slug,
 		"description": p.Description, "repo_url": p.RepoURL, "repo_provider": p.RepoProvider,

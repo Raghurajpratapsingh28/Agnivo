@@ -1,34 +1,374 @@
+# Agnivo full-stack local development.
+# Mirrors the production deployment topology:
+#   git push → api → builder → deployer → scheduler → runtime-agent → caddy → internet
+#
+# Usage:
+#   docker compose up --build          (first run — builds all images)
+#   docker compose up                  (subsequent runs)
+#   docker compose up api builder      (bring up subset)
+#   docker compose logs -f deployer    (tail a service)
+
+# ── shared environment ────────────────────────────────────────────────────────
+# All Go services share these base vars. Service-specific blocks override them.
+x-common: &common
+  build:
+    context: .
+    dockerfile: docker/agnivo.Dockerfile
+  env_file:
+    - path: .env
+      required: false
+  environment: &common-env
+    AGNIVO_APP_ENVIRONMENT: ${AGNIVO_APP_ENVIRONMENT:-development}
+    AGNIVO_CONFIG_DIR: /configs
+    AGNIVO_LOG_LEVEL: ${AGNIVO_LOG_LEVEL:-debug}
+    AGNIVO_LOG_FORMAT: ${AGNIVO_LOG_FORMAT:-console}
+    AGNIVO_DATABASE_ENABLED: "true"
+    AGNIVO_DATABASE_URL: postgres://agnivo:agnivo@postgres:5432/agnivo?sslmode=disable
+    AGNIVO_REDIS_ENABLED: "true"
+    AGNIVO_REDIS_URL: redis://redis:6379/0
+    AGNIVO_HTTP_ENABLED: "false"
+    AGNIVO_OBSERVABILITY_ADMIN_PORT: "9090"
+  restart: unless-stopped
+  networks:
+    - agnivo
+  depends_on:
+    postgres:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+
 services:
-  backend:
-    build:
-      context: .
-      dockerfile: docker/backend.Dockerfile
-    container_name: agnivo-backend
+  # ── Infrastructure ──────────────────────────────────────────────────────────
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: agnivo-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: agnivo
+      POSTGRES_PASSWORD: agnivo
+      POSTGRES_DB: agnivo
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agnivo -d agnivo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    networks:
+      - agnivo
+
+  redis:
+    image: redis:7-alpine
+    container_name: agnivo-redis
     restart: unless-stopped
     ports:
-      - "${BACKEND_PORT:-8080}:8080"
-    env_file:
-      - path: .env
-        required: false
-    environment:
-      PORT: 8080
-      AGNIVO_HTTP_ENABLED: "true"
-      AGNIVO_OBSERVABILITY_ADMIN_PORT: 9090
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-data:/data
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/health/live"]
-      interval: 30s
-      timeout: 3s
-      retries: 3
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
       start_period: 5s
     networks:
       - agnivo
 
+  # Local Docker image registry — builder pushes here, runtime-agent pulls from here.
+  # For single-host local dev this is optional (shared Docker socket is enough),
+  # but it mirrors the ECR role in production.
+  registry:
+    image: registry:2
+    container_name: agnivo-registry
+    restart: unless-stopped
+    ports:
+      - "${REGISTRY_PORT:-5000}:5000"
+    volumes:
+      - registry-data:/var/lib/registry
+    networks:
+      - agnivo
+
+  # Caddy is the edge reverse proxy. proxy-manager configures it dynamically
+  # via the Caddy Admin API at port 2019.
+  caddy:
+    image: caddy:2-alpine
+    container_name: agnivo-caddy
+    restart: unless-stopped
+    ports:
+      - "${HTTP_PORT:-80}:80"
+      - "${HTTPS_PORT:-443}:443"
+      - "2019:2019"
+    volumes:
+      - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:2019/config/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - agnivo
+
+  # ── Platform services ───────────────────────────────────────────────────────
+
+  # api — Public HTTP API (dashboard, webhooks, streaming).
+  # This is the only service exposed to users; all others are internal.
+  api:
+    <<: *common
+    build:
+      context: .
+      dockerfile: docker/agnivo.Dockerfile
+      args:
+        APP: api
+    container_name: agnivo-api
+    ports:
+      - "${BACKEND_PORT:-8080}:8080"
+      - "${ADMIN_PORT:-9090}:9090"
+    environment:
+      <<: *common-env
+      AGNIVO_HTTP_ENABLED: "true"
+      AGNIVO_HTTP_PORT: "8080"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # builder — Clones git repos and runs docker build.
+  # Needs the Docker socket to build images on the host daemon.
+  builder:
+    <<: *common
+    build:
+      context: .
+      dockerfile: docker/agnivo.Dockerfile
+      args:
+        APP: builder
+    container_name: agnivo-builder
+    environment:
+      <<: *common-env
+      AGNIVO_BUILDER_CONCURRENCY: "4"
+      AGNIVO_BUILDER_WORKSPACE_DIR: /tmp/agnivo-builds
+      AGNIVO_BUILDER_VISIBILITY: 30m
+      AGNIVO_BUILDER_POLL_INTERVAL: 1s
+      AGNIVO_BUILDER_DOCKER_CLI: docker
+      AGNIVO_BUILDER_INTERNAL_PORT: "8082"
+      AGNIVO_BUILDER_ECR_ENABLED: "false"
+      AGNIVO_BUILDER_CACHE_ENABLED: "true"
+      AGNIVO_BUILDER_CACHE_INLINE_CACHE: "true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - builder-workspace:/tmp/agnivo-builds
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # scheduler — Tracks runtime-agent capacity and picks which host runs each deployment.
+  scheduler:
+    <<: *common
+    build:
+      context: .
+      dockerfile: docker/agnivo.Dockerfile
+      args:
+        APP: scheduler
+    container_name: agnivo-scheduler
+    environment:
+      <<: *common-env
+      AGNIVO_SCHEDULER_INTERNAL_PORT: "8084"
+      AGNIVO_SCHEDULER_DEFAULT_ALGORITHM: least_loaded
+      AGNIVO_SCHEDULER_RESERVATION_TTL: 30m
+      AGNIVO_SCHEDULER_HEARTBEAT_INTERVAL: 15s
+      AGNIVO_SCHEDULER_MISSED_HEARTBEATS: "3"
+      AGNIVO_SCHEDULER_OVERCOMMIT_RATIO: "1.0"
+      AGNIVO_SCHEDULER_RECONCILE_INTERVAL: 30s
+      AGNIVO_SCHEDULER_DEFAULT_CPU_MILLICORES: "100"
+      AGNIVO_SCHEDULER_DEFAULT_MEMORY_MB: "256"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # runtime-agent — Manages Docker containers on this host node.
+  # Registers with scheduler, then deployer sends container create/start requests here.
+  # Needs Docker socket to manage user containers.
+  runtime-agent:
+    <<: *common
+    build:
+      context: .
+      dockerfile: docker/agnivo.Dockerfile
+      args:
+        APP: runtime-agent
+    container_name: agnivo-runtime-agent
+    environment:
+      <<: *common-env
+      AGNIVO_RUNTIME_AGENT_INTERNAL_PORT: "8085"
+      AGNIVO_RUNTIME_AGENT_SCHEDULER_URL: http://scheduler:8084
+      AGNIVO_RUNTIME_AGENT_ADVERTISE_HOST: runtime-agent
+      AGNIVO_RUNTIME_AGENT_ADVERTISE_PORT: "8085"
+      AGNIVO_RUNTIME_AGENT_REGION: us-east-1
+      AGNIVO_RUNTIME_AGENT_HEARTBEAT_INTERVAL: 15s
+      AGNIVO_RUNTIME_AGENT_HEALTH_INTERVAL: 10s
+      AGNIVO_RUNTIME_AGENT_GC_INTERVAL: 5m
+      AGNIVO_RUNTIME_AGENT_DOCKER_NETWORK: agnivo
+      AGNIVO_RUNTIME_AGENT_MAX_CONTAINERS: "200"
+      AGNIVO_RUNTIME_AGENT_CPU_CORES: "4"
+      AGNIVO_RUNTIME_AGENT_MEMORY_MB: "8192"
+      AGNIVO_RUNTIME_AGENT_DISK_GB: "100"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      scheduler:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # deployer — Orchestrates the full deploy pipeline:
+  #   asks scheduler for a host → tells runtime-agent to run the container →
+  #   runs health checks → triggers proxy-manager to add the route.
+  deployer:
+    <<: *common
+    build:
+      context: .
+      dockerfile: docker/agnivo.Dockerfile
+      args:
+        APP: deployer
+    container_name: agnivo-deployer
+    environment:
+      <<: *common-env
+      AGNIVO_DEPLOYER_CONCURRENCY: "8"
+      AGNIVO_DEPLOYER_VISIBILITY: 20m
+      AGNIVO_DEPLOYER_POLL_INTERVAL: 1s
+      AGNIVO_DEPLOYER_DOCKER_CLI: docker
+      AGNIVO_DEPLOYER_INTERNAL_PORT: "8083"
+      AGNIVO_DEPLOYER_DEFAULT_STRATEGY: rolling
+      AGNIVO_DEPLOYER_ECR_ENABLED: "false"
+      AGNIVO_DEPLOYER_SCHEDULER_URL: http://scheduler:8084
+      AGNIVO_DEPLOYER_RUNTIME_AGENT_URL: http://runtime-agent:8085
+      AGNIVO_DEPLOYER_HEALTH_STARTUP_TIMEOUT: 5m
+      AGNIVO_DEPLOYER_HEALTH_HTTP_PATH: /health
+      AGNIVO_DEPLOYER_HEALTH_READINESS_TIMEOUT: 2m
+      AGNIVO_DEPLOYER_HEALTH_LIVENESS_INTERVAL: 10s
+      AGNIVO_DEPLOYER_HEALTH_SUCCESS_THRESHOLD: "1"
+      AGNIVO_DEPLOYER_HEALTH_FAILURE_THRESHOLD: "3"
+      AGNIVO_DEPLOYER_NETWORK_DOCKER_NETWORK: agnivo
+      AGNIVO_DEPLOYER_NETWORK_HOST_PORT_MIN: "30000"
+      AGNIVO_DEPLOYER_NETWORK_HOST_PORT_MAX: "40000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      scheduler:
+        condition: service_healthy
+      runtime-agent:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # proxy-manager — Edge networking: dynamically programs Caddy with routes,
+  # SSL certs, custom domains, and preview URLs.
+  proxy-manager:
+    <<: *common
+    build:
+      context: .
+      dockerfile: docker/agnivo.Dockerfile
+      args:
+        APP: proxy-manager
+    container_name: agnivo-proxy-manager
+    environment:
+      <<: *common-env
+      AGNIVO_PROXY_MANAGER_INTERNAL_PORT: "8086"
+      AGNIVO_PROXY_MANAGER_CADDY_ADMIN_URL: http://caddy:2019
+      AGNIVO_PROXY_MANAGER_PLATFORM_DOMAIN: ${AGNIVO_PROXY_MANAGER_PLATFORM_DOMAIN:-localhost}
+      AGNIVO_PROXY_MANAGER_PREVIEW_DOMAIN: ${AGNIVO_PROXY_MANAGER_PREVIEW_DOMAIN:-preview.localhost}
+      AGNIVO_PROXY_MANAGER_RECONCILE_INTERVAL: 30s
+      AGNIVO_PROXY_MANAGER_DNS_CHECK_INTERVAL: 60s
+      AGNIVO_PROXY_MANAGER_CERT_RENEW_BEFORE: 720h
+      AGNIVO_PROXY_MANAGER_PREVIEW_TTL: 72h
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      caddy:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # worker — Background jobs: billing, GC, notifications, analytics, backups.
+  worker:
+    <<: *common
+    build:
+      context: .
+      dockerfile: docker/agnivo.Dockerfile
+      args:
+        APP: worker
+    container_name: agnivo-worker
+    environment:
+      <<: *common-env
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # cron — Distributed cron scheduler (uses Redis leader election).
+  cron:
+    <<: *common
+    build:
+      context: .
+      dockerfile: docker/agnivo.Dockerfile
+      args:
+        APP: cron
+    container_name: agnivo-cron
+    environment:
+      <<: *common-env
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+  # web — Next.js dashboard.
+  # Excluded from the default stack; start with:
+  #   docker compose --profile frontend up
   web:
     build:
       context: .
       dockerfile: docker/web.Dockerfile
     container_name: agnivo-web
     restart: unless-stopped
+    profiles:
+      - frontend
     ports:
       - "${WEB_PORT:-3000}:3000"
     env_file:
@@ -37,7 +377,7 @@ services:
     environment:
       NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8080}
     depends_on:
-      backend:
+      api:
         condition: service_healthy
     networks:
       - agnivo
@@ -45,3 +385,12 @@ services:
 networks:
   agnivo:
     driver: bridge
+    name: agnivo
+
+volumes:
+  postgres-data:
+  redis-data:
+  registry-data:
+  caddy-data:
+  caddy-config:
+  builder-workspace:

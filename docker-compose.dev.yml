@@ -1,49 +1,86 @@
 services:
-  backend:
-    build:
-      context: .
-      dockerfile: docker/backend.dev.Dockerfile
-    container_name: agnivo-backend-dev
-    ports:
-      - "${BACKEND_PORT:-8080}:8080"
-    env_file:
-      - path: .env
-        required: false
+  postgres:
+    image: postgres:16-alpine
+    container_name: agnivo-postgres-dev
+    restart: unless-stopped
     environment:
-      PORT: 8080
+      POSTGRES_USER: agnivo
+      POSTGRES_PASSWORD: agnivo
+      POSTGRES_DB: agnivo
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
-      - ./apps/backend:/src/apps/backend
-      - go-mod-cache:/go/pkg/mod
+      - postgres-dev-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U agnivo -d agnivo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
     networks:
       - agnivo
 
-  web:
+  redis:
+    image: redis:7-alpine
+    container_name: agnivo-redis-dev
+    restart: unless-stopped
+    ports:
+      - "${REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis-dev-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+    networks:
+      - agnivo
+
+  # api dev — uses the shared agnivo.Dockerfile (builds the api binary).
+  # Source changes require a rebuild: docker compose -f docker-compose.dev.yml up --build api
+  backend:
     build:
       context: .
-      dockerfile: docker/web.dev.Dockerfile
-    container_name: agnivo-web-dev
+      dockerfile: docker/agnivo.Dockerfile
+      args:
+        APP: api
+    container_name: agnivo-backend-dev
     ports:
-      - "${WEB_PORT:-3000}:3000"
+      - "${BACKEND_PORT:-8080}:8080"
+      - "${ADMIN_PORT:-9090}:9090"
     env_file:
       - path: .env
         required: false
     environment:
-      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8080}
-      WATCHPACK_POLLING: "true"
-    volumes:
-      - .:/app
-      - web-node-modules:/app/node_modules
-      - web-app-node-modules:/app/apps/web/node_modules
+      AGNIVO_APP_ENVIRONMENT: development
+      AGNIVO_CONFIG_DIR: /configs
+      AGNIVO_HTTP_ENABLED: "true"
+      AGNIVO_HTTP_PORT: "8080"
+      AGNIVO_OBSERVABILITY_ADMIN_PORT: "9090"
+      AGNIVO_DATABASE_ENABLED: "true"
+      AGNIVO_DATABASE_URL: postgres://agnivo:agnivo@postgres:5432/agnivo?sslmode=disable
+      AGNIVO_REDIS_ENABLED: "true"
+      AGNIVO_REDIS_URL: redis://redis:6379/0
     depends_on:
-      - backend
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:9090/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
     networks:
       - agnivo
+
 
 networks:
   agnivo:
     driver: bridge
 
 volumes:
-  go-mod-cache:
-  web-node-modules:
-  web-app-node-modules:
+  postgres-dev-data:
+  redis-dev-data:

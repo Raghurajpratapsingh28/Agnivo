@@ -22,6 +22,7 @@ RUN apk add --no-cache ca-certificates tzdata wget \
     && addgroup -S app && adduser -S app -G app
 
 COPY --from=builder /api /api
+COPY --from=builder /src/configs /configs
 
 USER app
 

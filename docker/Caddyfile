@@ -1,0 +1,13 @@
+# Caddy local-dev config for Agnivo proxy-manager.
+# proxy-manager pushes routes dynamically via the Caddy Admin API (port 2019).
+# This file just bootstraps Caddy with the admin API open and a default response.
+
+{
+    admin 0.0.0.0:2019
+    auto_https off
+}
+
+# Default catch-all — proxy-manager will add real routes at runtime.
+:80 {
+    respond "Agnivo Platform — proxy-manager is configuring routes..." 200
+}

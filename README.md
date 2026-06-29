@@ -65,6 +65,36 @@ docker compose up -d
 
 API health probe: `GET http://localhost:9090/health/live`
 
+## Deploy (single host, over SSH)
+
+Deploy the full platform to a fresh Linux server with one command from your laptop.
+It copies the repo, installs Docker if missing, generates a production `.env` with
+strong secrets (internal token, metrics token, control-plane encryption key, and a
+persistent JWT RS256 keypair), builds the images, and starts the stack.
+
+```bash
+# From your machine — pushes the working tree and deploys remotely:
+./scripts/ssh-deploy.sh -i ~/.ssh/id_ed25519 --domain agnivo.example.com ubuntu@SERVER_IP
+
+# Include the Next.js dashboard:
+./scripts/ssh-deploy.sh --with-web --domain agnivo.example.com root@SERVER_IP
+
+# Deploy from a git remote instead of rsync:
+./scripts/ssh-deploy.sh --git https://github.com/you/agnivo.git deploy@SERVER_IP
+```
+
+Already on the server (in the repo root)? Run the bootstrap directly:
+
+```bash
+./scripts/deploy.sh --domain agnivo.example.com --with-web
+./scripts/deploy.sh --down       # stop (keeps data volumes)
+./scripts/deploy.sh --destroy    # stop + delete volumes (DATA LOSS)
+```
+
+Generated secrets live in `.env` on the server and are never overwritten on re-runs.
+Persistent JWT keys require Docker Compose v2.24+ (otherwise the API falls back to
+ephemeral keys and logs a warning).
+
 ## Scripts
 
 | Command | Description |

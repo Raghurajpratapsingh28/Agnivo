@@ -1,11 +1,17 @@
 # syntax=docker/dockerfile:1
+# Hot-reload dev image — mounts source at /src, uses `go run` for fast iteration.
 
-FROM golang:1.23-alpine
+FROM golang:1.25-alpine
 
 RUN apk add --no-cache git ca-certificates
 
-WORKDIR /src/apps/backend
+WORKDIR /src
 
-EXPOSE 8080
+COPY go.mod go.sum ./
+RUN go mod download
 
-CMD ["go", "run", "./cmd/server"]
+COPY . .
+
+EXPOSE 8080 9090
+
+CMD ["go", "run", "./apps/api/cmd/api"]
