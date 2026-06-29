@@ -38,7 +38,8 @@ vendor/
 npm-debug.log*
 pnpm-debug.log*
 
-# Build
-dist/
-build/
-coverage/
+# Build (anchored to repo root so they don't match Go packages like
+# packages/application/build)
+/dist/
+/build/
+/coverage/
