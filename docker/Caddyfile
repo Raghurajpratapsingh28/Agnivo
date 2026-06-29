@@ -2,54 +2,42 @@
 # proxy-manager pushes additional routes dynamically via the Caddy Admin API (port 2019).
 
 {
-    admin 0.0.0.0:2019
-    email admin@invorra.tech
-    # Let's Encrypt issues the TLS cert automatically on first request.
+	admin 0.0.0.0:2019
+	email admin@invorra.tech
 }
 
-# ── API ───────────────────────────────────────────────────────────────────────
-# Serves https://app.invorra.tech/api/* and /stream/* → agnivo-api:8080
 app.invorra.tech {
-    # HTTPS-to-HTTP reverse proxy inside the Docker network
-    reverse_proxy /api/* agnivo-api:8080
-    reverse_proxy /stream/* agnivo-api:8080
-    reverse_proxy /internal/* agnivo-api:8080
+	# API routes (matched before the catch-all)
+	handle /api/* {
+		reverse_proxy agnivo-api:8080
+	}
+	handle /stream/* {
+		reverse_proxy agnivo-api:8080
+	}
+	handle /health* {
+		reverse_proxy agnivo-api:8080
+	}
 
-    # Health endpoint passthrough
-    reverse_proxy /health* agnivo-api:8080
+	# Dashboard — run ./scripts/deploy.sh --with-web to enable
+	handle {
+		reverse_proxy agnivo-web:3000
+	}
 
-    # Dashboard (Next.js) — only active when the web container is running.
-    # proxy-manager will override this with the actual web container route.
-    reverse_proxy /* agnivo-web:3000 {
-        lb_try_duration 2s
-        # If the web container is not up, fall through to the placeholder.
-        @down status 502 503 504
-        handle_response @down {
-            respond "Agnivo — dashboard not running. Start with --with-web." 200
-        }
-    }
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options nosniff
+		X-Frame-Options SAMEORIGIN
+		Referrer-Policy strict-origin-when-cross-origin
+	}
 
-    # Security headers
-    header {
-        Strict-Transport-Security "max-age=31536000; includeSubDomains"
-        X-Content-Type-Options nosniff
-        X-Frame-Options SAMEORIGIN
-        Referrer-Policy strict-origin-when-cross-origin
-    }
-
-    log {
-        output stdout
-        format console
-    }
+	log {
+		output stdout
+		format console
+	}
 }
 
-# ── Preview subdomains ────────────────────────────────────────────────────────
-# proxy-manager dynamically adds per-deployment routes under *.app.invorra.tech.
-# This catch-all handles anything it hasn't configured yet.
+# Preview subdomains — proxy-manager adds per-deployment routes at runtime.
+# Each subdomain gets its own cert via HTTP-01 (no wildcard needed).
 *.app.invorra.tech {
-    tls {
-        # Wildcard cert via DNS-01 — proxy-manager provisions this dynamically.
-        # Until then, individual subdomains get their own certs.
-    }
-    respond "Agnivo — route not yet configured." 200
+	respond "Agnivo — route not yet configured." 200
 }
